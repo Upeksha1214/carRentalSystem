@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.util.Date;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,4 +34,7 @@ public class RentalRequest {
     private String damagePaySlip;
 
     private double rentPayment;
+
+    private String state;
+
 }

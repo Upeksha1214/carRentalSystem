@@ -3,6 +3,7 @@ package lk.ijse.spring.contoller;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.CustomerUserAccDTO;
 import lk.ijse.spring.dto.RegisterCustomerDTO;
+import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.entity.Vehicle;
 import lk.ijse.spring.service.CustomerService;
@@ -36,6 +37,12 @@ public class CustomerController {
     public ResponseUtil ViewAllCar(){
         List<Vehicle> vehicles =customerService.viewCars();
         return new ResponseUtil(200,"All car Details received",vehicles);
+    }
+
+    @PostMapping(path = "rentalRequest")
+    public ResponseUtil rentalRequest(@RequestBody RentalRequestDTO rentalRequestDTO){
+        customerService.rentalRequest(rentalRequestDTO);
+        return new ResponseUtil(200,"All car Details received",null);
     }
 
 }
