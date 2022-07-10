@@ -18,7 +18,7 @@ public class DriverSchedule{
     @ManyToOne(cascade = CascadeType.ALL)
     private Driver driver;
     @ManyToOne(cascade = CascadeType.ALL)
-    private Vehicle vehicle;
+    private Car car;
 
     private String date;
     private String time;

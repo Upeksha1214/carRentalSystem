@@ -1,11 +1,9 @@
 package lk.ijse.spring.contoller;
 
 import lk.ijse.spring.dto.CustomerDTO;
-import lk.ijse.spring.dto.CustomerUserAccDTO;
 import lk.ijse.spring.dto.RegisterCustomerDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
-import lk.ijse.spring.entity.Customer;
-import lk.ijse.spring.entity.Vehicle;
+import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.service.CustomerService;
 import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ public class CustomerController {
     public ResponseUtil registerCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO){
 
         customerService.saveCustomer(registerCustomerDTO);
-        return new ResponseUtil(200,"Customer addedd complete",null);
+        return new ResponseUtil(200,"Customer added complete",null);
     }
 
     @PutMapping
@@ -35,8 +33,8 @@ public class CustomerController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil ViewAllCar(){
-        List<Vehicle> vehicles =customerService.viewCars();
-        return new ResponseUtil(200,"All car Details received",vehicles);
+        List<Car> cars =customerService.viewCars();
+        return new ResponseUtil(200,"All car Details received", cars);
     }
 
     @PostMapping(path = "rentalRequest")
