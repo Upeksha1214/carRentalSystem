@@ -1,6 +1,7 @@
 package lk.ijse.spring.contoller;
 
 import lk.ijse.spring.dto.CarDTO;
+import lk.ijse.spring.dto.ImageDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.service.AdminService;
 import lk.ijse.spring.util.FileDownloadUtil;
@@ -64,8 +65,8 @@ public class AdminController {
 
 
     @GetMapping(path = "getCarImage" , produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<Resource> getCarImage(@RequestParam String carId , @RequestParam String carView){
-        Resource fileAsResource = fileDownloadUtil.getFileAsResource(carId, carView);
+    public ResponseEntity<Resource> getCarImage(@RequestBody ImageDTO imageDTO){
+        Resource fileAsResource = fileDownloadUtil.getFileAsResource(imageDTO);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileAsResource);
     }
 
