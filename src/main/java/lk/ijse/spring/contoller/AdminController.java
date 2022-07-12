@@ -3,10 +3,13 @@ package lk.ijse.spring.contoller;
 import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.service.AdminService;
+import lk.ijse.spring.util.FileDownloadUtil;
 import lk.ijse.spring.util.ResponseUtil;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,6 +28,9 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private FileDownloadUtil fileDownloadUtil;
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCar(@RequestBody CarDTO carDTO){
 
@@ -34,19 +40,33 @@ public class AdminController {
 
     @SneakyThrows
     @PostMapping(path = "addCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil addCarImage(@RequestParam("file")MultipartFile multipartFile){
+    public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile , @RequestParam("carId") String carId){
+
         String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\";
-        Files.copy(multipartFile.getInputStream(), Paths.get(pathDirectory+ File.separator+multipartFile.getOriginalFilename()),
-                StandardCopyOption.REPLACE_EXISTING);
-        return new ResponseUtil(200,"Car image complete",null);
+
+        String [] carImageView={"Front","Back","Side","Interior"};
+
+        for (int i = 0; i < multipartFile.length; i++) {
+            String[] split=multipartFile[i].getContentType().split("/");
+            if (split[1].equals("jpeg") || split[1].equals("png")){
+                String imageName=carId+carImageView[i]+".jpeg";
+                Files.copy(multipartFile[i].getInputStream(),Paths.get(pathDirectory+File.separator+imageName),StandardCopyOption.REPLACE_EXISTING);
+
+            }else {
+                return new ResponseUtil(404,"please..  must be Car images type  jpeg or png",null);
+
+            }
+
+        }
+
+        return new ResponseUtil(200,"Car images added complete",null);
     }
 
-    @GetMapping(path = "getCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil  getCarImage(@RequestParam String name){
-        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\";
-        Path path = Paths.get(pathDirectory + File.separator + name);
-        return new ResponseUtil(200,"Car image return complete",path);
 
+    @GetMapping(path = "getCarImage" , produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<Resource> getCarImage(@RequestParam String carId , @RequestParam String carView){
+        Resource fileAsResource = fileDownloadUtil.getFileAsResource(carId, carView);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileAsResource);
     }
 
     @PutMapping(path = "editCar", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -66,6 +86,7 @@ public class AdminController {
     public ResponseUtil viewRentalRequest(){
         List<RentalRequestDTO> allRentalRequest = adminService.getAllRentalRequest();
         return new ResponseUtil(200,"car Delete success",allRentalRequest);
+
     }
 
 }
