@@ -6,6 +6,7 @@ import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.service.AdminService;
 import lk.ijse.spring.util.FileDownloadUtil;
 import lk.ijse.spring.util.ResponseUtil;
+import lk.ijse.spring.util.SearchFile;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -32,6 +33,9 @@ public class AdminController {
     @Autowired
     private FileDownloadUtil fileDownloadUtil;
 
+    @Autowired
+    private SearchFile searchFile;
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCar(@RequestBody CarDTO carDTO){
 
@@ -43,7 +47,7 @@ public class AdminController {
     @PostMapping(path = "addCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile , @RequestParam("carId") String carId){
 
-        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\";
+        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\carImage";
 
         String [] carImageView={"Front","Back","Side","Interior"};
 
@@ -76,12 +80,37 @@ public class AdminController {
         return new ResponseUtil(200,"car Details Updated",null);
     }
 
+    @SneakyThrows
+    @PutMapping(path = "updateCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile , @RequestParam("carId") String carId ,@RequestParam("view") String view){
+
+        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\carImage";
+
+        if (searchFile.searchFile(pathDirectory,carId+view+".jpeg")){
+            Files.copy(multipartFile.getInputStream(),Paths.get(pathDirectory+File.separator+carId+view+".jpeg"),StandardCopyOption.REPLACE_EXISTING);
+            return new ResponseUtil(200,"car Image Updated",null);
+        }
+        return new ResponseUtil(200,"car Image Update Fail",null);
+    }
+
     @DeleteMapping(path = "deleteCar",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCar(CarDTO carDTO){
         adminService.deleteCar(carDTO);
         return new ResponseUtil(200,"car Delete success",null);
     }
 
+    @SneakyThrows
+    @DeleteMapping(path = "deleteCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteCarAllImages(@RequestParam String carId){
+        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\carImage";
+        String [] carImageView={"Front","Back","Side","Interior"};
+
+        for (int i=0; i<carImageView.length; i++){
+            Files.deleteIfExists(Paths.get(pathDirectory+File.separator+carId+carImageView[i]+".jpeg"));
+        }
+
+        return new ResponseUtil(200,"car Delete success",null);
+    }
 
     @GetMapping(path = "viewRentalRequest", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil viewRentalRequest(){
