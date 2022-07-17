@@ -1,36 +1,50 @@
 export const styleSheet = {
-    car_id:{
 
+    all:{
+        display:'flex',
+        backgroundColor:'blue',
     },
-    brand_Name:{
 
+    nav:{
+        display:'flex',
+        flexDirection:'column',
+        /*border:'2px solid black',*/
+        justifyContent:"",
+        alignItems:'',
+        width:'32000vw',
+        height:'10vh',
+        backgroundColor:'black',
+    },
+    main:{
+        display:'flex',
+        flexDirection:'column',
+        /*border:'2px solid black',*/
+        justifyContent:"",
+        alignItems:'',
+        width:'100vw',
+        height:'100vh',
+        /*backgroundColor:'blue'*/
     },
 
-    images_of_Car:{
-
+    form:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:"space-evenly ",
+        width:'60%',
+        position:'absolute',
+        left:'200px',
+        top:'150px',
     },
-    number_of_passenger:{
 
+    lbl:{
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:"space-evenly ",
+        width: "3425px"
     },
-    transmission_type:{
-
-    },
-    fuel_type:{
-
-    },
-    price_of_duration:{
-
-    },
-    free_mileage_for_the_price_and_duration:{
-
-    },
-    price_for_extra_KM:{
-
-    },
-    registration_number:{
-
-    },
-    car_color:{
-
+    txt:{
+        backgroundColor: 'blue',
+        textColor:'white',
     }
+
 }
