@@ -1,107 +1,130 @@
-/*import myImage from "../../../assets/image/";*/
-export const styleSheet={
+import myImage from "../../../assets/image/av.jpg";
 
-    main_div : {
-        display : 'flex',
-        flexDirection : 'column',
-        flexWrap : 'wrap',
+export const styleSheet = {
+
+    main_div: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
         height: "100vh",
-        weight : "100vw",
+        weight: "100vw",
         /*alignItems : 'center',
         justifyContent  : 'center',*/
-        /*backgroundColor:"#FF00FF",*/
-        /*backgroundImage:"url(" + myImage+ ")",*/
+        background: "url(" + myImage + ")no-repeat center center fixed",
+        backgroundSize: 'cover',
+
+
     },
 
-    image_container:{
+
+    title_container: {
         display: 'flex',
-        top: '12px',
-        right: '1153px',
-        position: 'relative',
-    },
-
-
-    title_container : {
-        width:'100vw',
-        height:'50vh',
+        flexDirection: 'column',
+        width: '100vw',
+        height: '100vh',
         /*backgroundColor:'#008000',*/
-        background: 'rgba(255, 255, 255, 0.17)'
+        /*background: 'rgba(255, 255, 255, 0.17)'*/
+        /*  backgroundColor : 'blue',*/
+        background: 'rgba(20, 41, 53, 0.39)',
+        backdropFilter: 'blur(1.4px)',
+
+
+    },
+
+    navBar_container: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        width: '100%',
+        height: '15%'
+
+    },
+    button_container: {
+        /*  backgroundColor : 'blue',*/
+        width: '45%',
+        height: '40%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+
+
+    },
+
+    formControl: {
+        height: '10%',
+        width: '70px',
+        marginLeft: '30px'
+
     },
 
 
-    navgation_container:{
+    navgation_container: {
         background: 'rgba(255, 255, 255, 0)'
     },
-
-    icon_container:{
-        width:'900px',
-        position:'relative',
-        display:'flex',
+    icon_container: {
+        width: '900px',
+        position: 'relative',
+        display: 'flex',
         flexDirection: 'row',
-        left:'233px',
+        left: '233px',
 
     },
 
-    mobileIcon_container:{
-        display:'flex',
-        flexDirection:'row',
-        left:'50px',
+    mobileIcon_container: {
+        display: 'flex',
+        flexDirection: 'row',
+        left: '50px',
 
-        width:'300px'
+        width: '300px'
     },
-    mobileNumberList:{
-        display:'flex',
-        flexDirection:'column',
-        position:'relative',
-        left:'-55px',
-        justifyContent:'center',
-
-    },
-
-
-
-    mail_container:{
-        display:'flex',
-        flexDirection:'row',
-        left:'50px',
-        width:'300px'
+    mobileNumberList: {
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        left: '-55px',
+        justifyContent: 'center',
 
     },
 
-    mailName:{
-        display:'flex',
-        flexDirection:'column',
-        position:'relative',
-        left:'-55px',
-        justifyContent:'center',
-    },
 
-
-    location_container:{
-        display:'flex',
-        flexDirection:'row',
-        left:'50px',
-
-        width:'300px'
+    mail_container: {
+        display: 'flex',
+        flexDirection: 'row',
+        left: '50px',
+        width: '300px'
 
     },
 
-    location_deatail:{
-        display:'flex',
-        flexDirection:'column',
-        position:'relative',
-        left:'-55px',
-        justifyContent:'center',
+    mailName: {
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        left: '-55px',
+        justifyContent: 'center',
     },
 
 
-    form_container : {
+    location_container: {
+        display: 'flex',
+        flexDirection: 'row',
+        left: '50px',
+
+        width: '300px'
 
     },
 
-    button_container : {
-    }
+    location_deatail: {
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        left: '-55px',
+        justifyContent: 'center',
+    },
 
+
+    form_container: {},
 
 
 }

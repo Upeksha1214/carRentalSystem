@@ -1,9 +1,9 @@
 import React from "react";
-import Test from "../test/test";
+import Login from "../pages/customer/login";
 
 function App() {
   return (
-      <Test/>
+      <Login/>
   );
 }
 

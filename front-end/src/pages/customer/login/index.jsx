@@ -6,6 +6,12 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import {AiFillPhone} from "react-icons/ai";
 import Divider from "@material-ui/core/Divider";
 import myImage from "../../../assets/image/A.jpeg";
+import Button from "@material-ui/core/Button";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import logo from "../../../assets/image/logo.svg"
 
 
 class Login extends Component {
@@ -47,17 +53,37 @@ class Login extends Component {
                             </div>
                         </div>
                     </BottomNavigation>
-                    <Divider style={{borderTop:'8px solid #bbb'}}/>
+                    <Divider style={{borderTop:'4px solid '}}/>
+
+
+                    <div className={classes.navBar_container}>
+
+
+                        <img src={logo} alt=""/>
+
+                        <div className={classes.button_container}>
+                            <Button variant="contained" style={{backgroundColor:'green', color: 'white'}}>
+                                Home
+                            </Button>
+
+                            <div style={{color:'white'}}>Cars</div>
+                            <div style={{color:'white'}}>Pages</div>
+                            <div style={{color:'white'}}>Service</div>
+                            <div style={{color:'white'}}>Blog</div>
+                            <div style={{color:'white'}}>Contact</div>
+
+                        </div>
+
+
+
+                    </div>
+
+
 
                 </div>
-                <img className={classes.image_container} src={myImage} alt=""/>
-
-                <div className={classes.title_container}>
 
 
-                </div>
-                <div className={classes.button_container}>
-                </div>
+
             </div>
 
     );
