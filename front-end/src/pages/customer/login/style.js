@@ -12,6 +12,7 @@ export const styleSheet = {
         justifyContent  : 'center',*/
         background: "url(" + myImage + ")no-repeat center center fixed",
         backgroundSize: 'cover',
+        fontFamily: 'Open Sans',
 
 
     },
@@ -37,7 +38,9 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'space-around',
         width: '100%',
-        height: '15%'
+        height: '15%',
+
+
 
     },
     button_container: {

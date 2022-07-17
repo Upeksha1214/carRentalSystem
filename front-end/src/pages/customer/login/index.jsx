@@ -4,13 +4,10 @@ import {withStyles} from "@material-ui/core";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import {AiFillPhone} from "react-icons/ai";
+import {AiOutlineMail} from "react-icons/ai";
+import {ImLocation} from "react-icons/im";
 import Divider from "@material-ui/core/Divider";
-import myImage from "../../../assets/image/A.jpeg";
 import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import logo from "../../../assets/image/logo.svg"
 
 
@@ -39,14 +36,14 @@ class Login extends Component {
                             </div>
 
                             <div className={classes.mail_container}>
-                                <BottomNavigationAction label="Favorites" icon={<AiFillPhone/>}/>
+                                <BottomNavigationAction label="Favorites" icon={<AiOutlineMail/>}/>
                                 <ul className={classes.mailName}>
                                     upekshasachintha@gmail.com
                                 </ul>
                             </div>
 
                             <div className={classes.location_container}>
-                                <BottomNavigationAction label="Nearby" icon={<AiFillPhone/>}/>
+                                <BottomNavigationAction label="Nearby" icon={<ImLocation/>}/>
                                 <ul className={classes.location_deatail}>
                                     '123',colombo road,galle
                                 </ul>
