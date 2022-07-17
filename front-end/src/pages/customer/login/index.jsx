@@ -50,7 +50,7 @@ class Login extends Component {
                             </div>
                         </div>
                     </BottomNavigation>
-                    <Divider style={{borderTop:'4px solid '}}/>
+                    <Divider style={{borderTop: '4px solid '}}/>
 
 
                     <div className={classes.navBar_container}>
@@ -59,31 +59,21 @@ class Login extends Component {
                         <img src={logo} alt=""/>
 
                         <div className={classes.button_container}>
-                            <Button variant="contained" style={{backgroundColor:'green', color: 'white'}}>
+                            <Button variant="contained" style={{backgroundColor: 'green', color: 'white'}}>
                                 Home
                             </Button>
 
-                            <div style={{color:'white'}}>Cars</div>
-                            <div style={{color:'white'}}>Pages</div>
-                            <div style={{color:'white'}}>Service</div>
-                            <div style={{color:'white'}}>Blog</div>
-                            <div style={{color:'white'}}>Contact</div>
+                            <div style={{color: 'white'}}>Cars</div>
+                            <div style={{color: 'white'}}>Pages</div>
+                            <div style={{color: 'white'}}>Service</div>
+                            <div style={{color: 'white'}}>Blog</div>
+                            <div style={{color: 'white'}}>Contact</div>
 
                         </div>
-
-
-
                     </div>
-
-
-
                 </div>
-
-
-
             </div>
-
-    );
+        );
     }
 }
 
