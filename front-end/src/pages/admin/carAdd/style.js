@@ -1,50 +1,48 @@
 export const styleSheet = {
 
-    all:{
-        display:'flex',
-        backgroundColor:'blue',
+    all: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        height: '100vh',
     },
 
-    nav:{
-        display:'flex',
-        flexDirection:'column',
+    nav: {
+        display: 'flex',
+        flexDirection: 'row',
         /*border:'2px solid black',*/
-        justifyContent:"",
-        alignItems:'',
-        width:'32000vw',
-        height:'10vh',
-        backgroundColor:'black',
-    },
-    main:{
-        display:'flex',
-        flexDirection:'column',
-        /*border:'2px solid black',*/
-        justifyContent:"",
-        alignItems:'',
-        width:'100vw',
-        height:'100vh',
-        /*backgroundColor:'blue'*/
+        justifyContent: "",
+        alignItems: '',
+        height: '10vh',
+        backgroundColor: 'black',
     },
 
-    form:{
-        display:'flex',
-        flexDirection:'row',
-        justifyContent:"space-evenly ",
-        width:'60%',
-        position:'absolute',
-        left:'200px',
-        top:'150px',
+    main: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
     },
 
-    lbl:{
-        display:'flex',
-        flexDirection:'column',
-        justifyContent:"space-evenly ",
-        width: "3425px"
+    form_background: {
+        backgroundColor: 'white',
+        height: '80%',
+        width: '70%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: "20px",
+        boxShadow: '1px 1px 10px 0.2px'
     },
-    txt:{
-        backgroundColor: 'blue',
-        textColor:'white',
-    }
+
+    form: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: "space-evenly ",
+        width: '90%',
+        /*backgroundColor: "white"*/
+    },
 
 }
