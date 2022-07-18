@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Grid from "@material-ui/core/Grid";
 
 
 class CarAdd extends Component {
@@ -54,13 +53,6 @@ class CarAdd extends Component {
 
                             <div className={classes.form}>
 
-                                <Grid style={{width:'100%' , height : '100%'}} justifyContent={'center'} container spacing={1}>
-                                    <Grid item>
-                                        <div className={classes.item}>
-                                            <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
-                                        </div>
-                                    </Grid>
-
                                 <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
                                 <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
                                 <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
@@ -72,7 +64,7 @@ class CarAdd extends Component {
                                 <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
                                 <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
                                 <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
-                                </Grid>
+                                <TextField style={{width:'500px'}} id="outlined-basic" label="Car Id" variant="outlined"/>
                             </div>
 
                         </div>
