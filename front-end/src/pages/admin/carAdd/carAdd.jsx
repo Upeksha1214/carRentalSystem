@@ -29,7 +29,7 @@ class CarAdd extends Component {
                                     fontSize: '25px',
                                     width: '400px',
                                     height: '64px',
-                                }}> Hello
+                                }}> Car Adding Form
                                 </display4>
                                 <display4 style={{width: '0', height: '0', borderTop: '32px solid transparent', borderLeft: '66px solid red',
                                     borderBottom: '32px solid transparent'
@@ -65,33 +65,34 @@ class CarAdd extends Component {
                             <Grid item> <TextField id="outlined-basic" label="Registration number" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="Color" variant="outlined"/></Grid>
 
+
+                            <div><Button variant="contained" style={{
+                                backgroundColor: 'blue',
+                                width: '120px',
+                                height: '63px',
+                                color: ''
+                            }}>Add</Button>
+
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'blue',
+                                    width: '120px',
+                                    height: '63px',
+                                    color: ''
+                                }}>Clear all</Button>
+
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'blue',
+                                    width: '120px',
+                                    height: '63px',
+                                    color: ''
+                                }}>Back</Button></div>
+
                             <Grid item><div style={{width : '100vw' , height : '20%'}}></div> </Grid>
                         </Grid>
-
-                        <div><Button variant="contained" style={{
-                            backgroundColor: 'blue',
-                            width: '120px',
-                            height: '63px',
-                            color: ''
-                        }}>Add</Button>
-
-                            <Button variant="contained" style={{
-                                backgroundColor: 'blue',
-                                width: '120px',
-                                height: '63px',
-                                color: ''
-                            }}>Clear all</Button>
-
-                            <Button variant="contained" style={{
-                                backgroundColor: 'blue',
-                                width: '120px',
-                                height: '63px',
-                                color: ''
-                            }}>Back</Button></div>
                     </div>
                 </div>
             </Fragment>
-        )
+        );
     }
 
 }
