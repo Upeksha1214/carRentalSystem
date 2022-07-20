@@ -25,22 +25,30 @@ class CarAdd extends Component {
                         <AppBar position="static">
                             <Toolbar>
                                 <display4 style={{
-                                    backgroundColor: 'red',
-                                    fontSize: '25px',
+                                    backgroundColor: '#0000A5',
+                                    fontSize: '45px',
                                     width: '400px',
                                     height: '64px',
-                                }}> Car Adding Form
+                                    fontFamily: 'sans-serif',
+                                }}>Car Adding Form
                                 </display4>
-                                <display4 style={{width: '0', height: '0', borderTop: '32px solid transparent', borderLeft: '66px solid red',
+                                <display4 style={{
+                                    width: '0',
+                                    height: '0',
+                                    borderTop: '32px solid transparent',
+                                    borderLeft: '66px solid #0000A5',
                                     borderBottom: '32px solid transparent'
                                 }}></display4>
 
                                 <div style={{position: 'relative', width: '200px'}}></div>
                                 <Button variant="contained" style={{
                                     backgroundColor: 'white',
-                                    width: '120px',
-                                    height: '63px',
-                                    color: ''
+                                    width: '115px',
+                                    height: '33px',
+                                    color: '#000080',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+
                                 }}>Menu</Button>
                             </Toolbar>
                         </AppBar>
@@ -50,7 +58,9 @@ class CarAdd extends Component {
 
                         <Grid container className={classes.form_background} spacing={3} onAnimationStart={'animate'}>
 
-                            <Grid item><div style={{width : '100vw' , height : '20%'}}></div> </Grid>
+                            <Grid item>
+                                <div style={{width: '100vw', height: '20%'}}></div>
+                            </Grid>
 
                             <Grid item> <TextField id="outlined-basic" label="Car Id" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="Brand" variant="outlined"/></Grid>
@@ -66,29 +76,69 @@ class CarAdd extends Component {
                             <Grid item> <TextField id="outlined-basic" label="Color" variant="outlined"/></Grid>
 
 
-                            <div><Button variant="contained" style={{
-                                backgroundColor: 'blue',
-                                width: '120px',
-                                height: '63px',
-                                color: ''
-                            }}>Add</Button>
-
-                                <Button variant="contained" style={{
-                                    backgroundColor: 'blue',
-                                    width: '120px',
-                                    height: '63px',
-                                    color: ''
-                                }}>Clear all</Button>
-
-                                <Button variant="contained" style={{
-                                    backgroundColor: 'blue',
-                                    width: '120px',
-                                    height: '63px',
-                                    color: ''
-                                }}>Back</Button></div>
-
-                            <Grid item><div style={{width : '100vw' , height : '20%'}}></div> </Grid>
+                            <Grid item>
+                                <div style={{width: '100vw', height: '20%'}}></div>
+                            </Grid>
                         </Grid>
+
+                        <Grid container className={classes.button_background} spacing={2}>
+                            <Grid item>
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'blue',
+                                    width: '120px',
+                                    height: '50px',
+                                    color: '#3BB9FF',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+
+                                }}>Add</Button></Grid>
+
+                            <Grid item> <TextField id="outlined-basic" label="Search Id" variant="outlined"/></Grid>
+
+                            <Grid item>
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'blue',
+                                    width: '120px',
+                                    height: '50px',
+                                    color: '#3BB9FF',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+                                }}>Search</Button></Grid>
+
+                            <Grid item>
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'blue',
+                                    width: '120px',
+                                    height: '50px',
+                                    color: '#3BB9FF',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+                                }}>Update</Button></Grid>
+
+                            <Grid item>
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'blue',
+                                    width: '120px',
+                                    height: '50px',
+                                    color: '#3BB9FF',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+                                }}>Clear all</Button></Grid>
+
+                            <Grid item>
+
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'blue',
+                                    width: '120px',
+                                    height: '50px',
+                                    color: '#3BB9FF',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+                                }}>Back</Button>
+                            </Grid>
+
+                        </Grid>
+
                     </div>
                 </div>
             </Fragment>

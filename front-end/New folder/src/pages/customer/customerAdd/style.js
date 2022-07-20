@@ -1,4 +1,5 @@
-export const styleSheet={
+export const styleSheet = {
+
     all: {
         display: 'flex',
         flexDirection: 'column',
@@ -16,7 +17,7 @@ export const styleSheet={
         backgroundColor: 'black',
     },
 
-    driver_main: {
+    main: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -45,6 +46,5 @@ export const styleSheet={
         height : '70%',
         backgroundColor: 'red',
     },
-
 
 }

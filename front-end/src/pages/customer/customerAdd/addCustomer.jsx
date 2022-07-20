@@ -1,20 +1,18 @@
 import React, {Component, Fragment} from "react";
-import {styleSheet} from "../../admin/driverAdd/style";
 import {withStyles} from "@material-ui/core";
+import {styleSheet} from "../customerAdd/style";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 
-
-class DriverAdd extends Component {
+class AddCustomer extends Component{
     constructor(props) {
         super(props);
     }
-
     render() {
-        const {classes} = this.props
+        const {classes}=this.props
         return(
             <Fragment>
                 <div className={classes.all}>
@@ -24,11 +22,11 @@ class DriverAdd extends Component {
                             <Toolbar>
                                 <display4 style={{
                                     backgroundColor: '#0000A5',
-                                    fontSize: '45px',
+                                    fontSize: '37px',
                                     width: '400px',
                                     height: '64px',
                                     fontFamily: 'sans-serif',
-                                }}> Driver Adding Form
+                                }}> Customer Adding Form
                                 </display4>
                                 <display4 style={{width: '0', height: '0', borderTop: '32px solid transparent', borderLeft: '66px solid #0000A5',
                                     borderBottom: '32px solid transparent'
@@ -37,31 +35,28 @@ class DriverAdd extends Component {
                                 <div style={{position: 'relative', width: '200px'}}></div>
                                 <Button variant="contained" style={{
                                     backgroundColor: 'white',
-                                    width: '115px',
-                                    height: '33px',
-                                    color: '#000080',
-                                    borderRadius: "15px",
-                                    boxShadow: '1px 1px 5px 0.2px',
+                                    width: '120px',
+                                    height: '63px',
+                                    color: ''
                                 }}>Menu</Button>
                             </Toolbar>
                         </AppBar>
                     </div>
 
-                    <div className={classes.driver_main}>
+                    <div className={classes.main}>
 
                         <Grid container className={classes.form_background} spacing={3} onAnimationStart={'animate'}>
 
                             <Grid item><div style={{width : '100vw' , height : '20%'}}></div> </Grid>
 
-                            <Grid item> <TextField id="outlined-basic" label="Driver Id" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Customer Id" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="Email" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="UserName" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="New Password" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="NIC Number and Photo" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="Driving Number and Photo" variant="outlined"/></Grid>
                             <Grid item> <TextField id="outlined-basic" label="Address" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="contact Number" variant="outlined"/></Grid>
-
+                            <Grid item> <TextField id="outlined-basic" label="Color" variant="outlined"/></Grid>
 
                             <Grid item><div style={{width : '100vw' , height : '20%'}}></div> </Grid>
                         </Grid>
@@ -129,5 +124,6 @@ class DriverAdd extends Component {
             </Fragment>
         )
     }
+
 }
-export default withStyles(styleSheet)(DriverAdd)
+export default withStyles(styleSheet)(AddCustomer)

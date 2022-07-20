@@ -27,22 +27,28 @@ export const styleSheet = {
 
     form_background: {
         backgroundColor: 'white',
-        height: '90%',
         width: '70%',
         display: 'flex',
-        flexDirection: 'row',
-        /*justifyContent: 'center',
-        alignItems: 'center',*/
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: "20px",
-        boxShadow: '1px 1px 10px 0.2px'
+        boxShadow: '1px 1px 10px 0.2px',
     },
+
 
     form: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: "space-evenly ",
-        width: '90%',
-        /*backgroundColor: "white"*/
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '80%',
+        height: '70%',
+        backgroundColor: 'red',
     },
+
+    button_background: {
+
+    }
 
 }
