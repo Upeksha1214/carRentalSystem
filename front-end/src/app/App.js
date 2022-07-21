@@ -7,7 +7,7 @@ import AddCustomer from "../pages/customer/customerAdd/addCustomer";
 
 function App() {
   return (
-      <AddCustomer/>
+      <CarView/>
   );
 }
 
