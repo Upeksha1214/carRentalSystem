@@ -20,8 +20,8 @@ export const styleSheet = {
 
     form_background: {
         backgroundColor: 'white',
+        height:'80%',
         width: '70%',
-        height : '95%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -38,7 +38,7 @@ export const styleSheet = {
         justifyContent: 'center',
         width: '80%',
         height: '70%',
-        /*  backgroundColor: 'red',*/
+       /* backgroundColor: 'red',*/
     },
 
     button_background: {
@@ -55,11 +55,10 @@ export const styleSheet = {
 
     imageContainer :{
         marginTop: '10px',
-        height : '38%',
-        width : '100%',
+        height : '30%',
+        backgroundColor :'#5b6161',
         display : 'flex',
         flexDirection : 'row',
-        backgroundColor :'#5b6161',
         alignItems : 'center',
         justifyContent : 'space-around'
 
@@ -83,7 +82,6 @@ export const styleSheet = {
         borderTopRightRadius : '5px',
 
     }
-
 
 
 

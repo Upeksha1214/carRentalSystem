@@ -62,40 +62,36 @@ class CarAdd extends Component {
                                 <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
 
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Car Id" variant="outlined"/></Grid>
-                            <Grid item> <TextField  size={"small"}id="outlined-basic" label="Brand" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Number of passengers" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Transmission type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Fuel Type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Prices for the rent durations" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Free mileage for the price and duration" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Price for extra KM" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Color" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Car Id" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Brand" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Type" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Four images of the car" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Number of passengers" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Transmission type" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Fuel Type" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Prices for the rent durations" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Free mileage for the price and duration" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Price for extra KM" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Registration number" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Color" variant="outlined"/></Grid>
 
 
-
-
-                            <Grid item className={classes.imageContainer}>
-
-                                <div className={classes.imageDiv}> </div>
-
-
-                                <div className={classes.imageDiv}></div>
-
-
-                                <div className={classes.imageDiv}></div>
-
-
-
-                                <div className={classes.imageDiv}></div>
-
-
-                            </Grid>
                             <Grid item>
-                                <div style={{width: '100vw', height: '40%'}}></div>
+                                <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
+
+                                <Grid container className={classes.imageContainer}>
+
+                                    <Grid item><div className={classes.imageDiv}> </div>
+                                    </Grid>
+                                    <Grid item>
+                                        <div className={classes.imageDiv}></div>
+                                    </Grid>
+                                    <Grid item>
+                                        <div className={classes.imageDiv}></div>
+                                    </Grid>
+
+                                </Grid>
 
 
 

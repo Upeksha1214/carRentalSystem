@@ -1,23 +1,19 @@
 import React, {Component, Fragment} from "react";
 import {withStyles} from "@material-ui/core";
-import {styleSheet} from "../carAdd/style";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import {styleSheet} from "../customerAdd/style";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
 
-
-class CarAdd extends Component {
+class AddCustomer extends Component{
     constructor(props) {
         super(props);
     }
-
     render() {
-        const {classes} = this.props
-        return (
+        const {classes}=this.props
+        return(
             <Fragment>
                 <div className={classes.all}>
 
@@ -26,29 +22,22 @@ class CarAdd extends Component {
                             <Toolbar>
                                 <display4 style={{
                                     backgroundColor: '#0000A5',
-                                    fontSize: '45px',
+                                    fontSize: '37px',
                                     width: '400px',
                                     height: '64px',
                                     fontFamily: 'sans-serif',
-                                }}>Car Adding Form
+                                }}> Customer Adding Form
                                 </display4>
-                                <display4 style={{
-                                    width: '0',
-                                    height: '0',
-                                    borderTop: '32px solid transparent',
-                                    borderLeft: '66px solid #0000A5',
+                                <display4 style={{width: '0', height: '0', borderTop: '32px solid transparent', borderLeft: '66px solid #0000A5',
                                     borderBottom: '32px solid transparent'
                                 }}></display4>
 
                                 <div style={{position: 'relative', width: '200px'}}></div>
                                 <Button variant="contained" style={{
                                     backgroundColor: 'white',
-                                    width: '115px',
-                                    height: '33px',
-                                    color: '#000080',
-                                    borderRadius: "15px",
-                                    boxShadow: '1px 1px 5px 0.2px',
-
+                                    width: '120px',
+                                    height: '63px',
+                                    color: ''
                                 }}>Menu</Button>
                             </Toolbar>
                         </AppBar>
@@ -58,52 +47,19 @@ class CarAdd extends Component {
 
                         <Grid container className={classes.form_background} spacing={3} onAnimationStart={'animate'}>
 
-                            <Grid item>
-                                <div style={{width: '100vw', height: '20%'}}></div>
-                            </Grid>
+                            <Grid item><div style={{width : '100vw' , height : '20%'}}></div> </Grid>
 
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Car Id" variant="outlined"/></Grid>
-                            <Grid item> <TextField  size={"small"}id="outlined-basic" label="Brand" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Number of passengers" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Transmission type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Fuel Type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Prices for the rent durations" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Free mileage for the price and duration" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Price for extra KM" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Color" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Customer Id" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Email" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="UserName" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="New Password" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="NIC Number and Photo" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Driving Number and Photo" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Address" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Color" variant="outlined"/></Grid>
 
-
-
-
-                            <Grid item className={classes.imageContainer}>
-
-                                <div className={classes.imageDiv}> </div>
-
-
-                                <div className={classes.imageDiv}></div>
-
-
-                                <div className={classes.imageDiv}></div>
-
-
-
-                                <div className={classes.imageDiv}></div>
-
-
-                            </Grid>
-                            <Grid item>
-                                <div style={{width: '100vw', height: '40%'}}></div>
-                            </Grid>
-
-
-
+                            <Grid item><div style={{width : '100vw' , height : '20%'}}></div> </Grid>
                         </Grid>
-
-
-
-
 
                         <Grid container className={classes.button_background} spacing={2}>
                             <Grid item>
@@ -166,9 +122,8 @@ class CarAdd extends Component {
                     </div>
                 </div>
             </Fragment>
-        );
+        )
     }
 
 }
-
-export default withStyles(styleSheet)(CarAdd)
+export default withStyles(styleSheet)(AddCustomer)
