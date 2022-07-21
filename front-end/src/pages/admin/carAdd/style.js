@@ -55,13 +55,15 @@ export const styleSheet = {
 
     imageContainer :{
         marginTop: '10px',
-        height : '38%',
-        width : '100%',
+        height : '30%',
+        width : '97%',
         display : 'flex',
         flexDirection : 'row',
         backgroundColor :'#5b6161',
         alignItems : 'center',
-        justifyContent : 'space-around'
+        justifyContent : 'space-around',
+        borderRadius: "20px",
+        boxShadow: '1px 1px 10px 0.2px',
 
     },
 
@@ -82,9 +84,15 @@ export const styleSheet = {
         borderTopLeftRadius : '5px',
         borderTopRightRadius : '5px',
 
+    },
+
+    uploadImageButton:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-around',
+        width:'100%'
     }
-
-
 
 
 }

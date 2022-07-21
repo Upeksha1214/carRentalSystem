@@ -13,6 +13,13 @@ import Grid from "@material-ui/core/Grid";
 class CarAdd extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            front: null,
+            backImage: null,
+            side: null,
+            Interior: null,
+        }
     }
 
     render() {
@@ -62,47 +69,166 @@ class CarAdd extends Component {
                                 <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
 
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Car Id" variant="outlined"/></Grid>
-                            <Grid item> <TextField  size={"small"}id="outlined-basic" label="Brand" variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Car Id"
+                                                   variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Brand" variant="outlined"/></Grid>
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Number of passengers" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Transmission type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Fuel Type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Prices for the rent durations" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Free mileage for the price and duration" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Price for extra KM" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"}id="outlined-basic" label="Color" variant="outlined"/></Grid>
-
-
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Number of passengers"
+                                                   variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Transmission type"
+                                                   variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Fuel Type"
+                                                   variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic"
+                                                   label="Prices for the rent durations" variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic"
+                                                   label="Free mileage for the price and duration" variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Price for extra KM"
+                                                   variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number"
+                                                   variant="outlined"/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Color" variant="outlined"/></Grid>
 
 
                             <Grid item className={classes.imageContainer}>
 
-                                <div className={classes.imageDiv}> </div>
+                                <div className={classes.imageDiv} style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '75%',
+                                    backgroundImage: "url(" + this.state.front + ")",
+                                    backgroundSize: 'cover'
+                                }}></div>
 
 
-                                <div className={classes.imageDiv}></div>
+                                <div className={classes.imageDiv} style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '75%',
+                                    backgroundImage: "url(" + this.state.backImage+ ")",
+                                    backgroundSize: 'cover'
+                                }}></div>
 
 
-                                <div className={classes.imageDiv}></div>
+                                <div className={classes.imageDiv} style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '75%',
+                                    backgroundImage: "url(" + this.state.side  + ")",
+                                    backgroundSize: 'cover'
+                                }}></div>
 
 
-
-                                <div className={classes.imageDiv}></div>
+                                <div className={classes.imageDiv} style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '75%',
+                                    backgroundImage: "url(" + this.state.Interior + ")",
+                                    backgroundSize: 'cover'
+                                }}></div>
 
 
                             </Grid>
+
+                            <Grid item className={classes.uploadImageButton}>
+                                <div><input
+
+                                    style={{display: 'none'}}
+                                    accept="image/*"
+                                    className={classes.input}
+                                    id="contained-button-file01"
+                                    multiple
+                                    type="file"
+                                    onChange={(e) => {
+                                        this.setState({
+                                            front: URL.createObjectURL(e.target.files[0])
+                                        })
+                                    }}
+                                />
+                                    <label htmlFor="contained-button-file01">
+                                        <Button variant="contained" color="primary" component="span">
+                                            Upload
+                                        </Button>
+                                    </label>
+
+                                </div>
+                                <div><input
+
+                                    style={{display: 'none'}}
+                                    accept="image/*"
+                                    className={classes.input}
+                                    id="contained-button-file02"
+                                    multiple
+                                    type="file"
+                                    onChange={(e) => {
+                                        this.setState({
+                                            backImage: URL.createObjectURL(e.target.files[0])
+                                        })
+                                    }}
+                                />
+                                    <label htmlFor="contained-button-file02">
+                                        <Button variant="contained" color="primary" component="span">
+                                            Upload
+                                        </Button>
+                                    </label>
+
+                                </div>
+                                <div><input
+
+                                    style={{display: 'none'}}
+                                    accept="image/*"
+                                    className={classes.input}
+                                    id="contained-button-file03"
+                                    multiple
+                                    type="file"
+                                    onChange={(e) => {
+                                        this.setState({
+                                            side: URL.createObjectURL(e.target.files[0])
+                                        })
+                                    }}
+                                />
+                                    <label htmlFor="contained-button-file03">
+                                        <Button variant="contained" color="primary" component="span">
+                                            Upload
+                                        </Button>
+                                    </label>
+
+                                </div>
+                                <div><input
+
+                                    style={{display: 'none'}}
+                                    accept="image/*"
+                                    className={classes.input}
+                                    id="contained-button-file04"
+                                    multiple
+                                    type="file"
+                                    onChange={(e) => {
+                                        this.setState({
+                                            Interior: URL.createObjectURL(e.target.files[0])
+                                        })
+                                    }}
+                                />
+                                    <label htmlFor="contained-button-file04">
+                                        <Button variant="contained" color="primary" component="span">
+                                            Upload
+                                        </Button>
+                                    </label>
+
+                                </div>
+
+                            </Grid>
+
+
                             <Grid item>
                                 <div style={{width: '100vw', height: '40%'}}></div>
                             </Grid>
 
 
-
                         </Grid>
-
-
-
 
 
                         <Grid container className={classes.button_background} spacing={2}>
