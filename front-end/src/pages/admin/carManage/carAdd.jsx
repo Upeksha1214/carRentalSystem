@@ -58,7 +58,7 @@ class CarAdd extends Component {
                                     width: '400px',
                                     height: '64px',
                                     fontFamily: 'sans-serif',
-                                }}>Car Adding Form
+                                }}>Car Manage Form
                                 </display4>
                                 <display4 style={{
                                     width: '0',
@@ -68,7 +68,42 @@ class CarAdd extends Component {
                                     borderBottom: '32px solid transparent'
                                 }}></display4>
 
-                                <div style={{position: 'relative', width: '200px'}}></div>
+                                <div style={{position: 'relative', width: '50px'}}></div>
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'white',
+                                    width: '115px',
+                                    height: '33px',
+                                    color: '#000080',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+
+                                }}>Home</Button>
+
+                                <div style={{position: 'relative', width: '10px'}}></div>
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'white',
+                                    width: '250px',
+                                    height: '33px',
+                                    color: '#000080',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+
+                                }}>Rental Request Manage </Button>
+
+                                <div style={{position: 'relative', width: '10px'}}></div>
+
+                                <Button variant="contained" style={{
+                                    backgroundColor: 'white',
+                                    width: '180px',
+                                    height: '33px',
+                                    color: '#000080',
+                                    borderRadius: "15px",
+                                    boxShadow: '1px 1px 5px 0.2px',
+
+                                }}>Driver Manage </Button>
+
+                                <div style={{position: 'relative', width: '10px'}}></div>
+
                                 <Button variant="contained" style={{
                                     backgroundColor: 'white',
                                     width: '115px',
@@ -78,6 +113,7 @@ class CarAdd extends Component {
                                     boxShadow: '1px 1px 5px 0.2px',
 
                                 }}>Menu</Button>
+
                             </Toolbar>
                         </AppBar>
                     </div>
