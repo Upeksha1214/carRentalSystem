@@ -1,13 +1,11 @@
 import React, {Component, Fragment} from "react";
-import {withStyles} from "@material-ui/core";
 import {styleSheet} from ".//style";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import {withStyles} from "@material-ui/core";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
 import TableContainer from "@material-ui/core/TableContainer";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -17,7 +15,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 
 
-class CarAdd extends Component {
+class DriverAdd extends Component {
     constructor(props) {
         super(props);
 
@@ -36,13 +34,12 @@ class CarAdd extends Component {
         }
 
         const rows = [
-           /* createData('C001', 'Nissan', 6.0, 24, 4.0, <Button variant="contained" color="secondary">delete</Button>),
-            createData('Ice cream sandwich', 237, 9.0, 37, 4.3 ,<Button variant="contained" color="secondary">delete</Button>),
-            createData('Eclair', 262, 16.0, 24, 6.0 ,<Button variant="contained" color="secondary">delete</Button>),
-            createData('Cupcake', 305, 3.7, 67, 4.3,<Button variant="contained" color="secondary">delete</Button>),
-            createData('Gingerbread', 356, 16.0, 49, 3.9 , <Button variant="contained" color="secondary">delete</Button>),*/
+            /* createData('C001', 'Nissan', 6.0, 24, 4.0, <Button variant="contained" color="secondary">delete</Button>),
+             createData('Ice cream sandwich', 237, 9.0, 37, 4.3 ,<Button variant="contained" color="secondary">delete</Button>),
+             createData('Eclair', 262, 16.0, 24, 6.0 ,<Button variant="contained" color="secondary">delete</Button>),
+             createData('Cupcake', 305, 3.7, 67, 4.3,<Button variant="contained" color="secondary">delete</Button>),
+             createData('Gingerbread', 356, 16.0, 49, 3.9 , <Button variant="contained" color="secondary">delete</Button>),*/
         ];
-
 
         const {classes} = this.props
         return (
@@ -54,11 +51,11 @@ class CarAdd extends Component {
                             <Toolbar>
                                 <display4 style={{
                                     backgroundColor: '#0000A5',
-                                    fontSize: '45px',
+                                    fontSize: '43px',
                                     width: '400px',
                                     height: '64px',
                                     fontFamily: 'sans-serif',
-                                }}>Car Manage Form
+                                }}> Driver Manage Form
                                 </display4>
                                 <display4 style={{
                                     width: '0',
@@ -69,6 +66,7 @@ class CarAdd extends Component {
                                 }}></display4>
 
                                 <div style={{position: 'relative', width: '50px'}}></div>
+
                                 <Button variant="contained" style={{
                                     backgroundColor: 'white',
                                     width: '115px',
@@ -76,10 +74,10 @@ class CarAdd extends Component {
                                     color: '#000080',
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
-
                                 }}>Home</Button>
 
                                 <div style={{position: 'relative', width: '10px'}}></div>
+
                                 <Button variant="contained" style={{
                                     backgroundColor: 'white',
                                     width: '250px',
@@ -100,7 +98,7 @@ class CarAdd extends Component {
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
 
-                                }}>Driver Manage </Button>
+                                }}>Car Manage Form</Button>
 
                                 <div style={{position: 'relative', width: '10px'}}></div>
 
@@ -118,7 +116,7 @@ class CarAdd extends Component {
                         </AppBar>
                     </div>
 
-                    <div className={classes.main}>
+                    <div className={classes.driver_main}>
 
                         <Grid container className={classes.form_background} spacing={3} onAnimationStart={'animate'}>
 
@@ -126,26 +124,13 @@ class CarAdd extends Component {
                                 <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
 
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Car Id"
+                            <Grid item> <TextField id="outlined-basic" label="Driver Id" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Email" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="UserName" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="New Password" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Address" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="contact Number"
                                                    variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Brand" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Number of passengers"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Transmission type"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Fuel Type"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Prices for the rent durations" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Free mileage for the price and duration" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Price for extra KM"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Color" variant="outlined"/></Grid>
-
 
                             <Grid item className={classes.imageContainer}>
 
@@ -157,34 +142,12 @@ class CarAdd extends Component {
                                     backgroundImage: "url(" + this.state.front + ")",
                                     backgroundSize: 'cover'
                                 }}></div>
-
-
                                 <div className={classes.imageDiv} style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: '75%',
-                                    backgroundImage: "url(" + this.state.backImage+ ")",
-                                    backgroundSize: 'cover'
-                                }}></div>
-
-
-                                <div className={classes.imageDiv} style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    height: '75%',
-                                    backgroundImage: "url(" + this.state.side  + ")",
-                                    backgroundSize: 'cover'
-                                }}></div>
-
-
-                                <div className={classes.imageDiv} style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    height: '75%',
-                                    backgroundImage: "url(" + this.state.Interior + ")",
+                                    backgroundImage: "url(" + this.state.backImage + ")",
                                     backgroundSize: 'cover'
                                 }}></div>
 
@@ -213,6 +176,7 @@ class CarAdd extends Component {
                                     </label>
 
                                 </div>
+
                                 <div><input
 
                                     style={{display: 'none'}}
@@ -234,59 +198,14 @@ class CarAdd extends Component {
                                     </label>
 
                                 </div>
-                                <div><input
 
-                                    style={{display: 'none'}}
-                                    accept="image/*"
-                                    className={classes.input}
-                                    id="contained-button-file03"
-                                    multiple
-                                    type="file"
-                                    onChange={(e) => {
-                                        this.setState({
-                                            side: URL.createObjectURL(e.target.files[0])
-                                        })
-                                    }}
-                                />
-                                    <label htmlFor="contained-button-file03">
-                                        <Button variant="contained" color="primary" component="span">
-                                            Upload
-                                        </Button>
-                                    </label>
-
-                                </div>
-                                <div><input
-
-                                    style={{display: 'none'}}
-                                    accept="image/*"
-                                    className={classes.input}
-                                    id="contained-button-file04"
-                                    multiple
-                                    type="file"
-                                    onChange={(e) => {
-                                        this.setState({
-                                            Interior: URL.createObjectURL(e.target.files[0])
-                                        })
-                                    }}
-                                />
-                                    <label htmlFor="contained-button-file04">
-                                        <Button variant="contained" color="primary" component="span">
-                                            Upload
-                                        </Button>
-                                    </label>
-
-                                </div>
 
                             </Grid>
-
 
                             <Grid item>
-                                <div style={{width: '100vw', height: '40%'}}></div>
+                                <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
-
-
                         </Grid>
-
 
                         <Grid container className={classes.button_background} spacing={2}>
                             <Grid item>
@@ -345,7 +264,6 @@ class CarAdd extends Component {
                             </Grid>
 
                         </Grid>
-
                     </div>
                 </div>
                 <div className={classes.tableView}>
@@ -385,11 +303,9 @@ class CarAdd extends Component {
                         </Table>
                     </TableContainer>
                 </div>
-
             </Fragment>
-        );
+        )
     }
-
 }
 
-export default withStyles(styleSheet)(CarAdd)
+export default withStyles(styleSheet)(DriverAdd)
