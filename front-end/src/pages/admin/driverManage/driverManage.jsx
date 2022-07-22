@@ -271,18 +271,14 @@ class DriverAdd extends Component {
                         <Table className={classes.table} aria-label="simple table" s>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Car Id</TableCell>
-                                    <TableCell align="right">Brand</TableCell>
-                                    <TableCell align="right">Type</TableCell>
-                                    <TableCell align="right">Four images of the car</TableCell>
-                                    <TableCell align="right">Number of passengers </TableCell>
-                                    <TableCell align="right">Transmission type </TableCell>
-                                    <TableCell align="right">Fuel Type</TableCell>
-                                    <TableCell align="right">Prices for the rent durations</TableCell>
-                                    <TableCell align="right">Free mileage for the price and duration</TableCell>
-                                    <TableCell align="right">Price for extra KM</TableCell>
-                                    <TableCell align="right">Registration number</TableCell>
-                                    <TableCell align="right">Color</TableCell>
+                                    <TableCell>Driver Id</TableCell>
+                                    <TableCell align="right">Email</TableCell>
+                                    <TableCell align="right">User Name</TableCell>
+                                    <TableCell align="right">New Password</TableCell>
+                                    <TableCell align="right">NIC Number and Photo</TableCell>
+                                    <TableCell align="right">License Number and Photo</TableCell>
+                                    <TableCell align="right">Address</TableCell>
+                                    <TableCell align="right">contact Number</TableCell>
                                     <TableCell align="right">delete</TableCell>
                                 </TableRow>
                             </TableHead>
