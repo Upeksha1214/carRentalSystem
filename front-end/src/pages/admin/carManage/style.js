@@ -92,6 +92,22 @@ export const styleSheet = {
         alignItems:'center',
         justifyContent:'space-around',
         width:'100%'
+    },
+
+    tableView:{
+        backgroundColor:'red',
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        height: '100vh',
+    },
+
+    table:{
+        backgroundColor:'green',
+        display: 'flex',
+        flexDirection: 'column',
+        width: '95vw',
+        height: '100vh',
     }
 
 
