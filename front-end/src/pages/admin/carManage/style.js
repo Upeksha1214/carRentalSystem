@@ -3,18 +3,22 @@ export const styleSheet = {
     all: {
         display: 'flex',
         flexDirection: 'column',
-        width: '100vw',
-        height: '100vh',
+        /*width: '100vw',
+        height: '100vh',*/
     },
 
 
     main: {
+        marginBottom:'30px',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100%',
         width : '95%',
+        marginTop: '105px',
+        height: '540px',
+
+
         /*backgroundColor : 'red'*/
     },
 
@@ -108,6 +112,13 @@ export const styleSheet = {
         flexDirection: 'column',
         width: '95vw',
         height: '100vh',
+    },
+    tableContainer:{
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        width:'100%',
+        backgroundColor:'red'
     }
 
 

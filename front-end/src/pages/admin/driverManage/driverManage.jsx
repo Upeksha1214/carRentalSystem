@@ -22,8 +22,6 @@ class DriverAdd extends Component {
         this.state = {
             front: null,
             backImage: null,
-            side: null,
-            Interior: null,
         }
     }
 

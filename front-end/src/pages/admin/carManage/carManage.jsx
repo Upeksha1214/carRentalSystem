@@ -15,6 +15,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
+import axios from "../../../axios.js";
 
 
 class CarManage extends Component {
@@ -22,25 +23,30 @@ class CarManage extends Component {
         super(props);
 
         this.state = {
-            front: null,
+            frontImage: null,
             backImage: null,
-            side: null,
-            Interior: null,
+            sideImage: null,
+            interiorImage: null,
+
+            frontView : null,
+            backView : null,
+            sideView : null,
+            interiorView : null,
         }
     }
 
     render() {
 
-        function createData(name, calories, fat, carbs, protein , button) {
-            return { name, calories, fat, carbs, protein , button};
+        function createData(name, calories, fat, carbs, protein, button) {
+            return {name, calories, fat, carbs, protein, button};
         }
 
         const rows = [
-           /* createData('C001', 'Nissan', 6.0, 24, 4.0, <Button variant="contained" color="secondary">delete</Button>),
-            createData('Ice cream sandwich', 237, 9.0, 37, 4.3 ,<Button variant="contained" color="secondary">delete</Button>),
-            createData('Eclair', 262, 16.0, 24, 6.0 ,<Button variant="contained" color="secondary">delete</Button>),
-            createData('Cupcake', 305, 3.7, 67, 4.3,<Button variant="contained" color="secondary">delete</Button>),
-            createData('Gingerbread', 356, 16.0, 49, 3.9 , <Button variant="contained" color="secondary">delete</Button>),*/
+            /* createData('C001', 'Nissan', 6.0, 24, 4.0, <Button variant="contained" color="secondary">delete</Button>),
+             createData('Ice cream sandwich', 237, 9.0, 37, 4.3 ,<Button variant="contained" color="secondary">delete</Button>),
+             createData('Eclair', 262, 16.0, 24, 6.0 ,<Button variant="contained" color="secondary">delete</Button>),
+             createData('Cupcake', 305, 3.7, 67, 4.3,<Button variant="contained" color="secondary">delete</Button>),
+             createData('Gingerbread', 356, 16.0, 49, 3.9 , <Button variant="contained" color="secondary">delete</Button>),*/
         ];
 
 
@@ -154,7 +160,7 @@ class CarManage extends Component {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: '75%',
-                                    backgroundImage: "url(" + this.state.front + ")",
+                                    backgroundImage:"url(" +this.state.frontView+ ")",
                                     backgroundSize: 'cover'
                                 }}></div>
 
@@ -164,7 +170,7 @@ class CarManage extends Component {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: '75%',
-                                    backgroundImage: "url(" + this.state.backImage+ ")",
+                                    backgroundImage:"url(" +this.state.backView+ ")",
                                     backgroundSize: 'cover'
                                 }}></div>
 
@@ -174,7 +180,7 @@ class CarManage extends Component {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: '75%',
-                                    backgroundImage: "url(" + this.state.side  + ")",
+                                    backgroundImage:"url(" +this.state.sideView+ ")",
                                     backgroundSize: 'cover'
                                 }}></div>
 
@@ -184,7 +190,7 @@ class CarManage extends Component {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: '75%',
-                                    backgroundImage: "url(" + this.state.Interior + ")",
+                                    backgroundImage:"url(" +this.state.interiorView+ ")",
                                     backgroundSize: 'cover'
                                 }}></div>
 
@@ -202,7 +208,8 @@ class CarManage extends Component {
                                     type="file"
                                     onChange={(e) => {
                                         this.setState({
-                                            front: URL.createObjectURL(e.target.files[0])
+                                            frontImage: e.target.files[0],
+                                            frontView : URL.createObjectURL(e.target.files[0])
                                         })
                                     }}
                                 />
@@ -223,7 +230,8 @@ class CarManage extends Component {
                                     type="file"
                                     onChange={(e) => {
                                         this.setState({
-                                            backImage: URL.createObjectURL(e.target.files[0])
+                                            backImage: e.target.files[0],
+                                            backView : URL.createObjectURL(e.target.files[0])
                                         })
                                     }}
                                 />
@@ -244,7 +252,8 @@ class CarManage extends Component {
                                     type="file"
                                     onChange={(e) => {
                                         this.setState({
-                                            side: URL.createObjectURL(e.target.files[0])
+                                            sideImage: e.target.files[0],
+                                            sideView : URL.createObjectURL(e.target.files[0])
                                         })
                                     }}
                                 />
@@ -265,7 +274,8 @@ class CarManage extends Component {
                                     type="file"
                                     onChange={(e) => {
                                         this.setState({
-                                            Interior: URL.createObjectURL(e.target.files[0])
+                                            interiorImage: e.target.files[0],
+                                            interiorView : URL.createObjectURL(e.target.files[0])
                                         })
                                     }}
                                 />
@@ -298,7 +308,39 @@ class CarManage extends Component {
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
 
-                                }}>Add</Button></Grid>
+
+                                }}
+                                        onClick={async () => {
+
+                                            var bodyFormData = new FormData();
+
+
+                                            bodyFormData.append('param', this.state.frontImage);
+                                            bodyFormData.append('param', this.state.backImage);
+                                            bodyFormData.append('param', this.state.sideImage);
+                                            bodyFormData.append('param', this.state.interiorImage);
+
+
+                                            axios({
+                                                method: 'post',
+                                                url: 'Car/addCarImage?carId=Car001',
+                                                headers: {"Content-Type": "multipart/form-data"},
+                                                data: bodyFormData
+
+
+                                            })
+                                                .then(function (response) {
+                                                    console.log(response);
+                                                    alert("Car Image added Complete");
+                                                })
+                                                .catch(function (error) {
+                                                    console.log(error);
+                                                    alert("Car image add fail..")
+                                                });
+
+                                        }}
+
+                                >Add</Button></Grid>
 
                             <Grid item> <TextField id="outlined-basic" label="Search Id" variant="outlined"/></Grid>
 
@@ -310,7 +352,8 @@ class CarManage extends Component {
                                     color: '#3BB9FF',
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
-                                }}>Search</Button></Grid>
+                                }}
+                                >Search</Button></Grid>
 
                             <Grid item>
                                 <Button variant="contained" style={{
@@ -347,43 +390,45 @@ class CarManage extends Component {
                         </Grid>
 
                     </div>
-                </div>
-                <div className={classes.tableView}>
-                    <TableContainer component={Paper}>
-                        <Table className={classes.table} aria-label="simple table" s>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Car Id</TableCell>
-                                    <TableCell align="right">Brand</TableCell>
-                                    <TableCell align="right">Type</TableCell>
-                                    <TableCell align="right">Four images of the car</TableCell>
-                                    <TableCell align="right">Number of passengers </TableCell>
-                                    <TableCell align="right">Transmission type </TableCell>
-                                    <TableCell align="right">Fuel Type</TableCell>
-                                    <TableCell align="right">Prices for the rent durations</TableCell>
-                                    <TableCell align="right">Free mileage for the price and duration</TableCell>
-                                    <TableCell align="right">Price for extra KM</TableCell>
-                                    <TableCell align="right">Registration number</TableCell>
-                                    <TableCell align="right">Color</TableCell>
-                                    <TableCell align="right">delete</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow key={row.name}>
-                                        <TableCell component="th" scope="row">
-                                            {row.name}
-                                        </TableCell>
-                                        <TableCell align="right">{row.calories}</TableCell>
-                                        <TableCell align="right">{row.fat}</TableCell>
-                                        <TableCell align="right">{row.carbs}</TableCell>
-                                        <TableCell align="right">{row.protein}</TableCell>
-                                        <TableCell align="right">{row.button}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                    <div className={classes.tableContainer} style={{}}>
+                        <div className={classes.tableView}>
+                            <TableContainer component={Paper}>
+                                <Table className={classes.table} aria-label="simple table" s>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Car Id</TableCell>
+                                            <TableCell align="right">Brand</TableCell>
+                                            <TableCell align="right">Type</TableCell>
+                                            <TableCell align="right">Four images of the car</TableCell>
+                                            <TableCell align="right">Number of passengers </TableCell>
+                                            <TableCell align="right">Transmission type </TableCell>
+                                            <TableCell align="right">Fuel Type</TableCell>
+                                            <TableCell align="right">Prices for the rent durations</TableCell>
+                                            <TableCell align="right">Free mileage for the price and duration</TableCell>
+                                            <TableCell align="right">Price for extra KM</TableCell>
+                                            <TableCell align="right">Registration number</TableCell>
+                                            <TableCell align="right">Color</TableCell>
+                                            <TableCell align="right">delete</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {rows.map((row) => (
+                                            <TableRow key={row.name}>
+                                                <TableCell component="th" scope="row">
+                                                    {row.name}
+                                                </TableCell>
+                                                <TableCell align="right">{row.calories}</TableCell>
+                                                <TableCell align="right">{row.fat}</TableCell>
+                                                <TableCell align="right">{row.carbs}</TableCell>
+                                                <TableCell align="right">{row.protein}</TableCell>
+                                                <TableCell align="right">{row.button}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </div>
+                    </div>
                 </div>
 
             </Fragment>

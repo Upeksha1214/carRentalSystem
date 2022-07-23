@@ -20,12 +20,12 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("customer")
+    @RequestMapping("customer")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @PostMapping(path = "Customer Register",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "CustomerRegister",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil registerCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO){
 
         customerService.saveCustomer(registerCustomerDTO);

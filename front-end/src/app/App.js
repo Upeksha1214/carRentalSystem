@@ -3,10 +3,11 @@ import Login from "../pages/customer/login";
 import CarAdd from "../pages/admin/carManage/carManage";
 import DriverAdd from "../pages/admin/driverManage/driverManage";
 import AddCustomer from "../pages/customer/customerAdd/addCustomer";
+import CarManage from "../pages/admin/carManage/carManage";
 
 function App() {
   return (
-      <DriverAdd/>
+      <CarManage/>
   );
 }
 
