@@ -39,10 +39,11 @@ public class CarController {
     @Autowired
     private FileUploadUtil fileUploadUtil;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping( path ="addCar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCar(@RequestBody CarDTO carDTO) {
 
         adminService.addCar(carDTO);
+        System.out.println(carDTO.toString());
         return new ResponseUtil(200, "All car Details added", null);
     }
 

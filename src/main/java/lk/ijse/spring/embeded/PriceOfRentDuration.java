@@ -13,6 +13,6 @@ import javax.persistence.Embeddable;
 @ToString
 @Embeddable
 public class PriceOfRentDuration {
-    private double dailyPrice;
-    private double monthlyPrice;
+    private String dailyPrice;
+    private String monthlyPrice;
 }

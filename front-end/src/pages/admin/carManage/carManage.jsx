@@ -16,6 +16,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import axios from "../../../axios.js";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 
 class CarManage extends Component {
@@ -32,7 +33,23 @@ class CarManage extends Component {
             backView : null,
             sideView : null,
             interiorView : null,
+
+
+            carDetails : {
+                vehicleId : '',
+                vehicleType : '',
+                numofP : '',
+                transmissionType : '',
+                fuelType :'',
+                registerNum : '',
+                color : '',
+                pricesForDaily : '',
+                pricesForMonthly : '',
+                freeMileage : '',
+                priceForExtraKm : '',
+            }
         }
+
     }
 
     render() {
@@ -133,24 +150,72 @@ class CarManage extends Component {
                             </Grid>
 
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Car Id"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Brand" variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined"/></Grid>
+                                                   variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.vehicleId=e.target.value;
+                            }}/></Grid>
+
+
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.vehicleType=e.target.value;
+                            }}/></Grid>
+
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Number of passengers"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Transmission type"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Fuel Type"
-                                                   variant="outlined"/></Grid>
+                                                   variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.numofP=e.target.value;
+                            }}/></Grid>
+
+                            <Grid item> <Autocomplete
+                                id="combo-box-demo"
+                                size={"small"}
+
+                                options={[
+                                    { title: 'Auto'},
+                                    { title: "Manual"}]}
+                                getOptionLabel={(option) => option.title}
+                                style={{ width: 180 }}
+                                renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined" />}
+
+                                onChange={(event, value) =>
+                                    this.state.carDetails.transmissionType =  value.title}
+                            /></Grid>
+
+                            <Grid item> <Autocomplete
+                                id="combo-box-demo"
+                                size={"small"}
+
+                                options={[
+                                    { title: 'petrol'},
+                                    { title: "Diesel"}]}
+                                getOptionLabel={(option) => option.title}
+                                style={{ width: 180 }}
+                                renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined" />}
+
+                                onChange={(event, value) =>
+                                    this.state.carDetails.fuelType =  value.title}
+                            /></Grid>
                             <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Prices for the rent durations" variant="outlined"/></Grid>
+                                                   label="Prices for the rent durations Daily" variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.pricesForDaily=e.target.value;
+                            }}/></Grid>
                             <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Free mileage for the price and duration" variant="outlined"/></Grid>
+                                                   label="Prices for the rent durations Monthly" variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.pricesForMonthly=e.target.value;
+                            }}/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic"
+                                                   label="Free mileage for the price and duration" variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.freeMileage=e.target.value;
+                            }}/></Grid>
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Price for extra KM"
-                                                   variant="outlined"/></Grid>
+                                                   variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.priceForExtraKm=e.target.value;
+                            }}/></Grid>
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number"
-                                                   variant="outlined"/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Color" variant="outlined"/></Grid>
+                                                   variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.registerNum=e.target.value;
+                            }}/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Color" variant="outlined" onChange={(e) =>{
+                                this.state.carDetails.color=e.target.value;
+                            }}/></Grid>
 
 
                             <Grid item className={classes.imageContainer}>
@@ -311,6 +376,38 @@ class CarManage extends Component {
 
                                 }}
                                         onClick={async () => {
+
+                                            var carDetails = {
+                                                vehicleId : this.state.carDetails.vehicleId,
+                                                brand  : this.state.carDetails.vehicleType,
+                                                numOfPassenger : this.state.carDetails.numofP,
+                                                transmissionType : this.state.carDetails.transmissionType,
+                                                fuelType : this.state.carDetails.fuelType,
+                                                priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
+                                                priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
+                                                freeMileageForPriceAndDuration : this.state.carDetails.freeMileage,
+                                                priceOfExtraKm : this.state.carDetails.priceForExtraKm,
+                                                registerNumber : this.state.carDetails.registerNum,
+                                                color : this.state.carDetails.color,
+                                                state : 'Parking'
+                                            }
+
+                                            console.log(this.state.carDetails.type);
+
+                                            axios({
+                                                url: 'Car/addCar',
+                                                method: 'post',
+                                                contentType : 'application/json',
+                                                data: carDetails,
+                                            })
+                                                .then(function (response) {
+                                                    console.log(response);
+                                                    alert("Car  added Complete");
+                                                })
+                                                .catch(function (error) {
+                                                    console.log(error);
+                                                    alert("Car  add fail..")
+                                                });
 
                                             var bodyFormData = new FormData();
 

@@ -21,14 +21,15 @@ public class Car {
     @Id
     private String vehicleID;
     private String brand;
-    private String image;
-    private int NumOfPassenger;
+    private String numOfPassenger;
     private String transmissionType;
     private String fuelType;
     private PriceOfRentDuration priceOfRentDuration;
     private String freeMileageForPriceAndDuration;
     private String priceOfExtraKm;
     private String registerNumber;
+    private String color;
+    private String state;
 
     @OneToMany(mappedBy = "car")
     private Set<DriverSchedule> driverSchedules=new HashSet<DriverSchedule>();
