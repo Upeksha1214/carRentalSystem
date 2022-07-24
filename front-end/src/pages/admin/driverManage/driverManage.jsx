@@ -27,8 +27,8 @@ class DriverAdd extends Component {
 
     render() {
 
-        function createData(name, calories, fat, carbs, protein , button) {
-            return { name, calories, fat, carbs, protein , button};
+        function createData(name, calories, fat, carbs, protein, button) {
+            return {name, calories, fat, carbs, protein, button};
         }
 
         const rows = [
@@ -264,38 +264,40 @@ class DriverAdd extends Component {
                         </Grid>
                     </div>
                 </div>
-                <div className={classes.tableView}>
-                    <TableContainer component={Paper}>
-                        <Table className={classes.table} aria-label="simple table" s>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Driver Id</TableCell>
-                                    <TableCell align="right">Email</TableCell>
-                                    <TableCell align="right">User Name</TableCell>
-                                    <TableCell align="right">New Password</TableCell>
-                                    <TableCell align="right">NIC Number and Photo</TableCell>
-                                    <TableCell align="right">License Number and Photo</TableCell>
-                                    <TableCell align="right">Address</TableCell>
-                                    <TableCell align="right">contact Number</TableCell>
-                                    <TableCell align="right">delete</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow key={row.name}>
-                                        <TableCell component="th" scope="row">
-                                            {row.name}
-                                        </TableCell>
-                                        <TableCell align="right">{row.calories}</TableCell>
-                                        <TableCell align="right">{row.fat}</TableCell>
-                                        <TableCell align="right">{row.carbs}</TableCell>
-                                        <TableCell align="right">{row.protein}</TableCell>
-                                        <TableCell align="right">{row.button}</TableCell>
+                <div className={classes.tableContainer} >
+                    <div className={classes.tableView}>
+                        <TableContainer component={Paper}>
+                            <Table className={classes.table} aria-label="simple table" s>
+                                <TableHead style={{backgroundColor:'#98AFC7'}}>
+                                    <TableRow>
+                                        <TableCell>Driver Id</TableCell>
+                                        <TableCell align="right">Email</TableCell>
+                                        <TableCell align="right">User Name</TableCell>
+                                        <TableCell align="right">New Password</TableCell>
+                                        <TableCell align="right">NIC Number and Photo</TableCell>
+                                        <TableCell align="right">License Number and Photo</TableCell>
+                                        <TableCell align="right">Address</TableCell>
+                                        <TableCell align="right">contact Number</TableCell>
+                                        <TableCell align="right">delete</TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                                </TableHead>
+                                <TableBody>
+                                    {rows.map((row) => (
+                                        <TableRow key={row.name}>
+                                            <TableCell component="th" scope="row">
+                                                {row.name}
+                                            </TableCell>
+                                            <TableCell align="right">{row.calories}</TableCell>
+                                            <TableCell align="right">{row.fat}</TableCell>
+                                            <TableCell align="right">{row.carbs}</TableCell>
+                                            <TableCell align="right">{row.protein}</TableCell>
+                                            <TableCell align="right">{row.button}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </div>
                 </div>
             </Fragment>
         )

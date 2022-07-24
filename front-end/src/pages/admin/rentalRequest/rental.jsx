@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from "react";
-import {withStyles} from "@material-ui/core";
-import {styleSheet} from "../customerAdd/style";
-import AppBar from "@material-ui/core/AppBar";
+import {styleSheet} from "../rentalRequest/rentalStyle"
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+import AppBar from "@material-ui/core/AppBar";
+import {withStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import TableContainer from "@material-ui/core/TableContainer";
@@ -14,7 +14,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 
-class AddCustomer extends Component {
+class RentalRequestAdd extends Component {
     constructor(props) {
         super(props);
 
@@ -37,22 +37,21 @@ class AddCustomer extends Component {
              createData('Cupcake', 305, 3.7, 67, 4.3,<Button variant="contained" color="secondary">delete</Button>),
              createData('Gingerbread', 356, 16.0, 49, 3.9 , <Button variant="contained" color="secondary">delete</Button>),*/
         ];
+
         const {classes} = this.props
         return (
-
             <Fragment>
                 <div className={classes.all}>
-
                     <div className={classes.root}>
                         <AppBar position="static">
                             <Toolbar>
                                 <display4 style={{
                                     backgroundColor: '#0000A5',
-                                    fontSize: '36px',
+                                    fontSize: '30px',
                                     width: '400px',
                                     height: '64px',
                                     fontFamily: 'sans-serif',
-                                }}> Customer Manage Form
+                                }}> Rental Request Manage Form
                                 </display4>
                                 <display4 style={{
                                     width: '0',
@@ -77,13 +76,13 @@ class AddCustomer extends Component {
 
                                 <Button variant="contained" style={{
                                     backgroundColor: 'white',
-                                    width: '250px',
+                                    width: '205px',
                                     height: '33px',
                                     color: '#000080',
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
 
-                                }}>Rental Request Manage </Button>
+                                }}>Driver Manage Form</Button>
 
                                 <div style={{position: 'relative', width: '10px'}}></div>
 
@@ -113,7 +112,7 @@ class AddCustomer extends Component {
                         </AppBar>
                     </div>
 
-                    <div className={classes.main}>
+                    <div className={classes.driver_main}>
 
                         <Grid container className={classes.form_background} spacing={3} onAnimationStart={'animate'}>
 
@@ -121,15 +120,15 @@ class AddCustomer extends Component {
                                 <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
 
-                            <Grid item> <TextField id="outlined-basic" label="Customer Id" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="Email" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="UserName" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="New Password" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="Address" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="Color" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Request Id" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Cust Id" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Car Id" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Pickup Date And Time" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Request Date And Time" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Rent Payment"
+                                                   variant="outlined"/></Grid>
 
                             <Grid item className={classes.imageContainer}>
-
                                 <div className={classes.imageDiv} style={{
                                     display: 'flex',
                                     alignItems: 'center',
@@ -138,15 +137,6 @@ class AddCustomer extends Component {
                                     backgroundImage: "url(" + this.state.front + ")",
                                     backgroundSize: 'cover'
                                 }}></div>
-                                <div className={classes.imageDiv} style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    height: '75%',
-                                    backgroundImage: "url(" + this.state.backImage + ")",
-                                    backgroundSize: 'cover'
-                                }}></div>
-
                             </Grid>
 
                             <Grid item className={classes.uploadImageButton}>
@@ -172,29 +162,6 @@ class AddCustomer extends Component {
 
                                 </div>
 
-                                <div><input
-
-                                    style={{display: 'none'}}
-                                    accept="image/*"
-                                    className={classes.input}
-                                    id="contained-button-file02"
-                                    multiple
-                                    type="file"
-                                    onChange={(e) => {
-                                        this.setState({
-                                            backImage: URL.createObjectURL(e.target.files[0])
-                                        })
-                                    }}
-                                />
-                                    <label htmlFor="contained-button-file02">
-                                        <Button variant="contained" color="primary" component="span">
-                                            Upload
-                                        </Button>
-                                    </label>
-
-                                </div>
-
-
                             </Grid>
 
                             <Grid item>
@@ -203,6 +170,7 @@ class AddCustomer extends Component {
                         </Grid>
 
                         <Grid container className={classes.button_background} spacing={2}>
+
                             <Grid item>
                                 <Button variant="contained" style={{
                                     backgroundColor: 'blue',
@@ -261,21 +229,20 @@ class AddCustomer extends Component {
                     </div>
                 </div>
 
-                <div className={classes.tableContainer} style={{}}>
+                <div className={classes.tableContainer} >
                     <div className={classes.tableView}>
                         <TableContainer component={Paper}>
                             <Table className={classes.table} aria-label="simple table" s>
                                 <TableHead style={{backgroundColor:'#98AFC7'}}>
                                     <TableRow>
-                                        <TableCell>Customer Id</TableCell>
-                                        <TableCell align="right">Email</TableCell>
-                                        <TableCell align="right">User Name</TableCell>
-                                        <TableCell align="right">New Password</TableCell>
-                                        <TableCell align="right">NIC Number and Photo</TableCell>
-                                        <TableCell align="right">License Number and Photo</TableCell>
-                                        <TableCell align="right">Address</TableCell>
-                                        <TableCell align="right">contact Number</TableCell>
-                                        <TableCell align="right">delete</TableCell>
+                                        <TableCell>Driver Id</TableCell>
+                                        <TableCell align="right">Request Id</TableCell>
+                                        <TableCell align="right">Cust Id</TableCell>
+                                        <TableCell align="right">Car Id</TableCell>
+                                        <TableCell align="right">Pickup Date And Time</TableCell>
+                                        <TableCell align="right">Request Date And Time</TableCell>
+                                        <TableCell align="right">Rent Payment</TableCell>
+                                        <TableCell align="right">Delete</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -302,4 +269,4 @@ class AddCustomer extends Component {
 
 }
 
-export default withStyles(styleSheet)(AddCustomer)
+export default withStyles(styleSheet)(RentalRequestAdd);

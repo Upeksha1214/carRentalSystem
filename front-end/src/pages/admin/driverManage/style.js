@@ -2,8 +2,8 @@ export const styleSheet={
     all: {
         display: 'flex',
         flexDirection: 'column',
-        width: '100vw',
-        height: '100vh',
+        /*width: '100vw',
+        height: '100vh',*/
     },
 
     nav: {
@@ -17,11 +17,13 @@ export const styleSheet={
     },
 
     driver_main: {
+        marginBottom:'30px',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100%',
+        marginTop: '105px',
+        height: '540px',
         width : '95%',
     },
 
@@ -100,19 +102,24 @@ export const styleSheet={
     },
 
     tableView:{
-        backgroundColor:'red',
         display: 'flex',
         flexDirection: 'column',
-        width: '100vw',
+        width: '98vw',
         height: '100vh',
     },
 
     table:{
-        backgroundColor:'green',
-        display: 'flex',
-        flexDirection: 'column',
-        width: '95vw',
-        height: '100vh',
-    }
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        width:'100%',
+    },
+    tableContainer:{
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        width:'100%',
+
+    },
 
 }

@@ -491,8 +491,8 @@ class CarManage extends Component {
                         <div className={classes.tableView}>
                             <TableContainer component={Paper}>
                                 <Table className={classes.table} aria-label="simple table" s>
-                                    <TableHead>
-                                        <TableRow>
+                                    <TableHead style={{backgroundColor:'#98AFC7'}}>
+                                        <TableRow style={{}}>
                                             <TableCell>Car Id</TableCell>
                                             <TableCell align="right">Brand</TableCell>
                                             <TableCell align="right">Type</TableCell>

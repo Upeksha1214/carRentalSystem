@@ -17,21 +17,21 @@ export const styleSheet = {
         backgroundColor: 'black',
     },
 
-    main: {
+    driver_main: {
         marginBottom:'30px',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: '105px',
         height: '540px',
-        marginTop: '-20px',
         width : '95%',
     },
 
     form_background: {
         backgroundColor: 'white',
         width: '70%',
-        height: '80%',
+        height : '95%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -49,7 +49,7 @@ export const styleSheet = {
         height: '70%',
     },
 
-    button_background: {
+    button_background:{
         display : 'flex',
         flexDirection : 'column',
         width : '20%',
@@ -59,6 +59,7 @@ export const styleSheet = {
         marginLeft : '50px',
         borderRadius: "20px",
         boxShadow: '1px 1px 10px 0.2px',
+
     },
 
     imageContainer :{
@@ -114,13 +115,11 @@ export const styleSheet = {
         justifyContent:'center',
         width:'100%',
     },
-
     tableContainer:{
         display:'flex',
         alignItems:'center',
         justifyContent:'center',
         width:'100%',
-    }
 
-
+    },
 }

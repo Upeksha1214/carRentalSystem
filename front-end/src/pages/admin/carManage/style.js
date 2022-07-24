@@ -107,10 +107,9 @@ export const styleSheet = {
     },
 
     table:{
-        backgroundColor:'green',
         display: 'flex',
         flexDirection: 'column',
-        width: '95vw',
+        width: '98vw',
         height: '100vh',
     },
     tableContainer:{
@@ -118,7 +117,7 @@ export const styleSheet = {
         alignItems:'center',
         justifyContent:'center',
         width:'100%',
-        backgroundColor:'red'
+
     }
 
 
