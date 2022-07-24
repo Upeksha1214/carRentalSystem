@@ -468,7 +468,7 @@ class CarManage extends Component {
                                     color: '#3BB9FF',
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
-                                }}>Back</Button>
+                                }}>Delete</Button>
                             </Grid>
 
                         </Grid>
@@ -492,7 +492,6 @@ class CarManage extends Component {
                                             <TableCell align="right">Price for extra KM</TableCell>
                                             <TableCell align="right">Registration number</TableCell>
                                             <TableCell align="right">Color</TableCell>
-                                            <TableCell align="right">delete</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>

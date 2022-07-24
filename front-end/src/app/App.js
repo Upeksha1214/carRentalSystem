@@ -6,11 +6,12 @@ import AddCustomer from "../pages/customer/customerAdd/addCustomer";
 import CarManage from "../pages/admin/carManage/carManage";
 import RentalRequestAdd from "../pages/admin/rentalRequest/rental";
 import DriverSchedule from "../pages/admin/driverShedule/driverSchedule";
+import AdminDashBord from "../pages/admin/adminDashBord/adminDashBord";
 
 
 function App() {
   return (
-      <CarManage/>
+      <RentalRequestAdd/>
   );
 }
 
