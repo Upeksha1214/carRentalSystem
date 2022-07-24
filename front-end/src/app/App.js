@@ -10,7 +10,7 @@ import DriverSchedule from "../pages/admin/driverShedule/driverSchedule";
 
 function App() {
   return (
-      <DriverSchedule/>
+      <CarManage/>
   );
 }
 

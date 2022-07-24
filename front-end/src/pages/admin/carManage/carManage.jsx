@@ -17,6 +17,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import axios from "../../../axios.js";
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import CarService from "../../../services/CarService";
+
 
 
 class CarManage extends Component {
@@ -49,11 +51,53 @@ class CarManage extends Component {
                 priceForExtraKm : '',
             }
         }
+    }
+    addCarImage=async (carId) =>{
+
+        var bodyFormData = new FormData();
+        bodyFormData.append('param', this.state.frontImage);
+        bodyFormData.append('param', this.state.backImage);
+        bodyFormData.append('param', this.state.sideImage);
+        bodyFormData.append('param', this.state.interiorImage);
+
+        let res = await CarService.addCarImage(bodyFormData,carId);
+        if (res.data.code===200){alert(res.data.message)}else {
+            alert(res.data.message);
+        }
+
+    }
+
+    addCar =async () =>{
+
+        var carDetails = {
+            vehicleId : this.state.carDetails.vehicleId,
+            brand  : this.state.carDetails.vehicleType,
+            numOfPassenger : this.state.carDetails.numofP,
+            transmissionType : this.state.carDetails.transmissionType,
+            fuelType : this.state.carDetails.fuelType,
+            priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
+            priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
+            freeMileageForPriceAndDuration : this.state.carDetails.freeMileage,
+            priceOfExtraKm : this.state.carDetails.priceForExtraKm,
+            registerNumber : this.state.carDetails.registerNum,
+            color : this.state.carDetails.color,
+            state : 'Parking'
+        }
+
+        let res = await CarService.addCar(carDetails);
+        if (res.data.code==200){
+            alert(res.data.message);
+
+            this.addCarImage(carDetails.vehicleId);
+
+        }else {
+            alert(res.data.message);
+        }
+
 
     }
 
     render() {
-
         function createData(name, calories, fat, carbs, protein, button) {
             return {name, calories, fat, carbs, protein, button};
         }
@@ -376,64 +420,7 @@ class CarManage extends Component {
 
                                 }}
                                         onClick={async () => {
-
-                                            var carDetails = {
-                                                vehicleId : this.state.carDetails.vehicleId,
-                                                brand  : this.state.carDetails.vehicleType,
-                                                numOfPassenger : this.state.carDetails.numofP,
-                                                transmissionType : this.state.carDetails.transmissionType,
-                                                fuelType : this.state.carDetails.fuelType,
-                                                priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
-                                                priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
-                                                freeMileageForPriceAndDuration : this.state.carDetails.freeMileage,
-                                                priceOfExtraKm : this.state.carDetails.priceForExtraKm,
-                                                registerNumber : this.state.carDetails.registerNum,
-                                                color : this.state.carDetails.color,
-                                                state : 'Parking'
-                                            }
-
-                                            console.log(this.state.carDetails.type);
-
-                                            axios({
-                                                url: 'Car/addCar',
-                                                method: 'post',
-                                                contentType : 'application/json',
-                                                data: carDetails,
-                                            })
-                                                .then(function (response) {
-                                                    console.log(response);
-                                                    alert("Car  added Complete");
-                                                })
-                                                .catch(function (error) {
-                                                    console.log(error);
-                                                    alert("Car  add fail..")
-                                                });
-
-                                            var bodyFormData = new FormData();
-
-
-                                            bodyFormData.append('param', this.state.frontImage);
-                                            bodyFormData.append('param', this.state.backImage);
-                                            bodyFormData.append('param', this.state.sideImage);
-                                            bodyFormData.append('param', this.state.interiorImage);
-
-
-                                            axios({
-                                                method: 'post',
-                                                url: 'Car/addCarImage?carId=Car001',
-                                                headers: {"Content-Type": "multipart/form-data"},
-                                                data: bodyFormData
-
-
-                                            })
-                                                .then(function (response) {
-                                                    console.log(response);
-                                                    alert("Car Image added Complete");
-                                                })
-                                                .catch(function (error) {
-                                                    console.log(error);
-                                                    alert("Car image add fail..")
-                                                });
+                                            this.addCar();
 
                                         }}
 

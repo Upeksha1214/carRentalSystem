@@ -130,6 +130,7 @@ class DriverSchedule extends Component {
                             <Grid item>
                                 <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
+
                         </Grid>
 
                         <Grid container className={classes.button_background} spacing={2}>
