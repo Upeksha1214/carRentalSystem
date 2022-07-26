@@ -83,7 +83,7 @@ export default function ViewAllCarPopUpTable(props) {
         if (res.data.code==200){
             var i=0;
             for (let dataKey of res.data.data) {
-                rows[i]=createData(dataKey.vehicleId,dataKey.brand,dataKey.numOfPassenger,dataKey.transmissionType,dataKey.fuelType,dataKey.priceOfRentDurationDaily,dataKey.priceOfRentDurationMonthly,dataKey.freeMileageForPriceAndDuration,dataKey.priceOfExtraKm,dataKey.registerNumber,dataKey.color)
+                rows[i]=createData(dataKey.vehicleId,dataKey.brand,dataKey.numOfPassenger,dataKey.transmissionType,dataKey.fuelType,dataKey.registerNumber,dataKey.color,dataKey.freeMileageForPriceAndDuration,dataKey.priceOfExtraKm,dataKey.priceOfRentDurationDaily,dataKey.priceOfRentDurationMonthly)
                 i++;
             }
             setShow(true)

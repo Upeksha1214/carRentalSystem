@@ -117,9 +117,56 @@ class CarManage extends Component {
         }else {
             alert(res.data.message);
         }
-
-
     }
+
+    updateCar=async () =>{
+        var carUpdateDetails = {
+            vehicleId : this.state.carDetails.vehicleId,
+            brand  : this.state.carDetails.vehicleType,
+            numOfPassenger : this.state.carDetails.numofP,
+            transmissionType : this.state.carDetails.transmissionType,
+            fuelType : this.state.carDetails.fuelType,
+            priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
+            priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
+            freeMileageForPriceAndDuration : this.state.carDetails.freeMileage,
+            priceOfExtraKm : this.state.carDetails.priceForExtraKm,
+            registerNumber : this.state.carDetails.registerNum,
+            color : this.state.carDetails.color,
+            state : 'Parking'
+        }
+
+        let res =await CarService.updateCar(carUpdateDetails);
+        if (res.status===200){
+
+            let front=this.state.frontImage;
+            let back=this.state.backImage;
+            let side=this.state.sideImage;
+            let interior=this.state.interiorImage;
+            let list=[front,back,side,interior]
+            let viewList=["Front","Back","Side","Interior"]
+
+            for (var i=0; i<list.length; i++){
+                if (list[i] != null){
+                    let formData = new FormData();
+                    formData.append('carImage',list[i]);
+                    await this.updateCarImage(formData, carUpdateDetails.vehicleId, viewList[i]);
+                }
+            }
+
+            alert('Car Details Update SuccessFull..')
+        }else {
+            alert("Car update Fail..")
+        }
+    }
+
+    updateCarImage=async (data,carId,view) =>{
+        let response =await CarService.updateCarImage(data,carId,view);
+        if (response.status!=200){
+            alert("Car Image Update Fail")
+        }
+    }
+
+
 
     render() {
         function createData(name, calories, fat, carbs, protein, button) {
@@ -555,7 +602,13 @@ class CarManage extends Component {
                                     color: '#3BB9FF',
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
-                                }}>Update</Button></Grid>
+                                }}
+                                        onClick={async () => {
+                                            this.updateCar();
+
+                                        }}
+
+                                >Update</Button></Grid>
 
                             <Grid item>
                                 <Button variant="contained" style={{

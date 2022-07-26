@@ -88,13 +88,13 @@ public class CarController {
     }
 
     @PutMapping(path = "editCar", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil editCar(CarDTO carDTO) {
+    public ResponseUtil editCar(@RequestBody CarDTO carDTO) {
         carService.editCar(carDTO);
         return new ResponseUtil(200, "car Details Updated", null);
     }
 
     @SneakyThrows
-    @PutMapping(path = "updateCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "updateCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile, @RequestParam("carId") String carId, @RequestParam("view") String view) {
 
         String pathDirectory = "D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\carImage";

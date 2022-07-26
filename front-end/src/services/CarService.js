@@ -58,5 +58,33 @@ class CarService {
         })
         return await promise;
     }
+
+    updateCar = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.put('Car/editCar',data)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+    updateCarImage =async (data,carId,view) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.post('Car/updateCarImage?carId='+carId+'&view='+view,data)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
 }
 export default new CarService();
