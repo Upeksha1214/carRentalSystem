@@ -18,6 +18,7 @@ import TableBody from "@material-ui/core/TableBody";
 import axios from "../../../axios.js";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CarService from "../../../services/CarService";
+import ViewAllCarPopUpTable from "../../../compounts/viewAllCarPoupTable";
 
 
 
@@ -31,27 +32,46 @@ class CarManage extends Component {
             sideImage: null,
             interiorImage: null,
 
-            frontView : null,
-            backView : null,
-            sideView : null,
-            interiorView : null,
+            frontView: null,
+            backView: null,
+            sideView: null,
+            interiorView: null,
 
 
-            carDetails : {
-                vehicleId : '',
-                vehicleType : '',
-                numofP : '',
-                transmissionType : '',
-                fuelType :'',
-                registerNum : '',
-                color : '',
-                pricesForDaily : '',
-                pricesForMonthly : '',
-                freeMileage : '',
-                priceForExtraKm : '',
+            carDetails: {
+                vehicleId: '',
+                vehicleType: '',
+                numofP: '',
+                transmissionType: '',
+                fuelType: '',
+                registerNum: '',
+                color: '',
+                pricesForDaily: '',
+                pricesForMonthly: '',
+                freeMileage: '',
+                priceForExtraKm: '',
             }
         }
     }
+
+        changeStateCarDetails(vehicleId,vehicleType,numofP,transmissionType,fuelType,registerNum,color,pricesForDaily,pricesForMonthly,freeMileage,priceForExtraKm){
+            this.setState({
+                carDetails : {
+                    vehicleId : vehicleId,
+                    vehicleType : vehicleType,
+                    numofP : numofP,
+                    transmissionType : transmissionType,
+                    fuelType :fuelType,
+                    registerNum : registerNum,
+                    color : color,
+                    pricesForDaily : pricesForDaily,
+                    pricesForMonthly : pricesForMonthly,
+                    freeMileage : freeMileage,
+                    priceForExtraKm : priceForExtraKm,
+                }
+
+            })
+        }
     addCarImage=async (carId) =>{
 
         var bodyFormData = new FormData();
@@ -194,72 +214,155 @@ class CarManage extends Component {
                             </Grid>
 
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Car Id"
-                                                   variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.vehicleId=e.target.value;
-                            }}/></Grid>
+                                                   variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.carDetails.vehicleId}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.vehicleId = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
 
 
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.vehicleType=e.target.value;
-                            }}/></Grid>
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Type" variant="outlined"
+                                                   value={this.state.carDetails.vehicleType}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.vehicleType = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
 
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Number of passengers"
-                                                   variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.numofP=e.target.value;
-                            }}/></Grid>
-
-                            <Grid item> <Autocomplete
-                                id="combo-box-demo"
-                                size={"small"}
-
-                                options={[
-                                    { title: 'Auto'},
-                                    { title: "Manual"}]}
-                                getOptionLabel={(option) => option.title}
-                                style={{ width: 180 }}
-                                renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined" />}
-
-                                onChange={(event, value) =>
-                                    this.state.carDetails.transmissionType =  value.title}
+                                                   variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.carDetails.numofP}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.numofP = e.target.value
+                                                       this.setState({ data })
+                                                   }}
                             /></Grid>
 
-                            <Grid item> <Autocomplete
-                                id="combo-box-demo"
-                                size={"small"}
+                            <Grid item><TextField
+                                        label="Transmission type." variant="outlined"
+                                        value={this.state.carDetails.transmissionType}
+                                        size={"small"}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        onChange={(e) => {
+                                            let data = this.state.carDetails
+                                            data.transmissionType = e.target.value
+                                            this.setState({ data })
+                                        }}
+                            />
 
-                                options={[
-                                    { title: 'petrol'},
-                                    { title: "Diesel"}]}
-                                getOptionLabel={(option) => option.title}
-                                style={{ width: 180 }}
-                                renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined" />}
+                            </Grid>
 
-                                onChange={(event, value) =>
-                                    this.state.carDetails.fuelType =  value.title}
+                            <Grid item><TextField
+                                 size={"small"}
+                                  label="Transmission type." variant="outlined" value={this.state.carDetails.fuelType}
+
+                                  InputLabelProps={{
+                                      shrink: true,
+                                  }}
+                                 onChange={(e) => {
+                                     let data = this.state.carDetails
+                                     data.fuelType = e.target.value
+                                     this.setState({ data })
+                                 }}
+                            />
+
+
+                            </Grid>
+                            <Grid item><TextField size={"small"} id="outlined-basic"
+                                                   label="Prices for the rent durations Daily" variant="outlined"
+                                                  InputLabelProps={{
+                                                      shrink: true,
+                                                  }}
+                                                  value={this.state.carDetails.pricesForDaily}
+
+                                                  onChange={(e) => {
+                                                      let data = this.state.carDetails
+                                                      data.pricesForDaily = e.target.value
+                                                      this.setState({ data })
+                                                  }}
                             /></Grid>
+
                             <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Prices for the rent durations Daily" variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.pricesForDaily=e.target.value;
-                            }}/></Grid>
+                                                   label="Prices for the rent durations Monthly" variant="outlined"
+                                                   value={this.state.carDetails.pricesForMonthly}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.pricesForMonthly = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
+
                             <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Prices for the rent durations Monthly" variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.pricesForMonthly=e.target.value;
-                            }}/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Free mileage for the price and duration" variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.freeMileage=e.target.value;
-                            }}/></Grid>
+                                                   label="Free mileage for the price and duration" variant="outlined"
+                                                   value={this.state.carDetails.freeMileage}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.freeMileage = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Price for extra KM"
-                                                   variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.priceForExtraKm=e.target.value;
-                            }}/></Grid>
+                                                   variant="outlined"
+                                                   value={this.state.carDetails.priceForExtraKm}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.priceForExtraKm = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number"
-                                                   variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.registerNum=e.target.value;
-                            }}/></Grid>
-                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Color" variant="outlined" onChange={(e) =>{
-                                this.state.carDetails.color=e.target.value;
-                            }}/></Grid>
+                                                   variant="outlined"
+                                                   value={this.state.carDetails.registerNum}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.registerNum = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Color"
+                                                   variant="outlined"
+                                                   value={this.state.carDetails.color}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.color = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
 
 
                             <Grid item className={classes.imageContainer}>
@@ -426,6 +529,7 @@ class CarManage extends Component {
 
                                 >Add</Button></Grid>
 
+
                             <Grid item> <TextField id="outlined-basic" label="Search Id" variant="outlined"/></Grid>
 
                             <Grid item>
@@ -470,11 +574,14 @@ class CarManage extends Component {
                                     boxShadow: '1px 1px 5px 0.2px',
                                 }}>Delete</Button>
                             </Grid>
+                            <Grid item>
+                                <ViewAllCarPopUpTable data={{changeStateCarDetails:this.changeStateCarDetails.bind(this)}}/>
+                            </Grid>
 
                         </Grid>
 
                     </div>
-                    <div className={classes.tableContainer} style={{}}>
+                    {/*<div className={classes.tableContainer} style={{}}>
                         <div className={classes.tableView}>
                             <TableContainer component={Paper}>
                                 <Table className={classes.table} aria-label="simple table" s>
@@ -511,7 +618,7 @@ class CarManage extends Component {
                                 </Table>
                             </TableContainer>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
 
             </Fragment>

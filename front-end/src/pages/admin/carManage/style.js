@@ -15,7 +15,7 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'center',
         width : '95%',
-        marginTop: '105px',
+       /* marginTop: '105px',*/
         height: '540px',
 
 
@@ -49,7 +49,7 @@ export const styleSheet = {
         display : 'flex',
         flexDirection : 'column',
         width : '20%',
-        height : "75%",
+        height : "90%",
         backgroundColor : '',
         alignItems : 'center',
         marginLeft : '50px',

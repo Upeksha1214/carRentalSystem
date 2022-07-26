@@ -9,9 +9,10 @@ import DriverSchedule from "../pages/admin/driverShedule/driverSchedule";
 import AdminDashBord from "../pages/admin/adminDashBord/adminDashBord";
 
 
-function App() {
+
+ function App() {
   return (
-      <RentalRequestAdd/>
+      <CarManage/>
   );
 }
 

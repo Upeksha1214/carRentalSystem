@@ -3,7 +3,7 @@ package lk.ijse.spring.contoller;
 import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.ImageDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
-import lk.ijse.spring.service.AdminService;
+import lk.ijse.spring.service.CarService;
 import lk.ijse.spring.util.FileDownloadUtil;
 import lk.ijse.spring.util.ResponseUtil;
 import lk.ijse.spring.util.SearchFile;
@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
@@ -28,7 +27,7 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private AdminService adminService;
+    private CarService carService;
 
     @Autowired
     private FileDownloadUtil fileDownloadUtil;
@@ -39,7 +38,7 @@ public class AdminController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCar(@RequestBody CarDTO carDTO){
 
-        adminService.addCar(carDTO);
+        carService.addCar(carDTO);
         return new ResponseUtil(200,"All car Details added", null);
     }
 
@@ -76,7 +75,7 @@ public class AdminController {
 
     @PutMapping(path = "editCar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil editCar(CarDTO carDTO){
-        adminService.editCar(carDTO);
+        carService.editCar(carDTO);
         return new ResponseUtil(200,"car Details Updated",null);
     }
 
@@ -95,7 +94,7 @@ public class AdminController {
 
     @DeleteMapping(path = "deleteCar",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCar(CarDTO carDTO){
-        adminService.deleteCar(carDTO);
+        carService.deleteCar(carDTO);
         return new ResponseUtil(200,"car Delete success",null);
     }
 
@@ -114,7 +113,7 @@ public class AdminController {
 
     @GetMapping(path = "viewRentalRequest", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil viewRentalRequest(){
-        List<RentalRequestDTO> allRentalRequest = adminService.getAllRentalRequest();
+        List<RentalRequestDTO> allRentalRequest = carService.getAllRentalRequest();
         return new ResponseUtil(200,"car Delete success",allRentalRequest);
 
     }

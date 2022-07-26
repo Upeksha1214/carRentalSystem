@@ -3,7 +3,7 @@ package lk.ijse.spring.contoller;
 import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.ImageDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
-import lk.ijse.spring.service.AdminService;
+import lk.ijse.spring.service.CarService;
 import lk.ijse.spring.util.FileDownloadUtil;
 import lk.ijse.spring.util.FileUploadUtil;
 import lk.ijse.spring.util.ResponseUtil;
@@ -28,7 +28,7 @@ import java.util.List;
 public class CarController {
 
     @Autowired
-    private AdminService adminService;
+    private CarService carService;
 
     @Autowired
     private FileDownloadUtil fileDownloadUtil;
@@ -42,7 +42,7 @@ public class CarController {
     @PostMapping( path ="addCar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCar(@RequestBody CarDTO carDTO) {
 
-        adminService.addCar(carDTO);
+        carService.addCar(carDTO);
         System.out.println(carDTO.toString());
         return new ResponseUtil(200, "All car Details added", null);
     }
@@ -81,7 +81,7 @@ public class CarController {
 
     @PutMapping(path = "editCar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil editCar(CarDTO carDTO) {
-        adminService.editCar(carDTO);
+        carService.editCar(carDTO);
         return new ResponseUtil(200, "car Details Updated", null);
     }
 
@@ -100,7 +100,7 @@ public class CarController {
 
     @DeleteMapping(path = "deleteCar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCar(CarDTO carDTO) {
-        adminService.deleteCar(carDTO);
+        carService.deleteCar(carDTO);
         return new ResponseUtil(200, "car Delete success", null);
     }
 
@@ -119,7 +119,7 @@ public class CarController {
 
     @GetMapping(path = "viewRentalRequest", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil viewRentalRequest() {
-        List<RentalRequestDTO> allRentalRequest = adminService.getAllRentalRequest();
+        List<RentalRequestDTO> allRentalRequest = carService.getAllRentalRequest();
         return new ResponseUtil(200, "car Delete success", allRentalRequest);
 
     }
@@ -130,6 +130,15 @@ public class CarController {
     public String testMethod(@RequestParam("carId") String carId, @RequestParam("carName") String carName){
         System.out.println("ok requested");
         return "Hello Test is ok request recvid";
+    }
+
+    @GetMapping(path ="getAllCars" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllCars(){
+
+        List<CarDTO> allCars = carService.getAllCars();
+
+        return new ResponseUtil(200,"Get All Cars",allCars);
+
     }
 
 }
