@@ -74,9 +74,17 @@ public class CarController {
 
 
     @GetMapping(path = "getCarImage", produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<Resource> getCarImage(@RequestBody ImageDTO imageDTO) {
-        Resource fileAsResource = fileDownloadUtil.getFileAsResource(imageDTO);
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileAsResource);
+    public ResponseEntity<?> getCarImage(@RequestParam String carId, String view) {
+
+        ImageDTO imageDto = new ImageDTO(carId, "car", view);
+        Resource fileAsResource1 = fileDownloadUtil.getFileAsResource(imageDto);
+
+        if (fileAsResource1==null){
+            return ResponseEntity.badRequest().contentType(MediaType.APPLICATION_JSON).body("Car Image not found");
+        }
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileAsResource1);
+
+
     }
 
     @PutMapping(path = "editCar", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -54,7 +54,7 @@ class CarManage extends Component {
         }
     }
 
-        changeStateCarDetails(vehicleId,vehicleType,numofP,transmissionType,fuelType,registerNum,color,pricesForDaily,pricesForMonthly,freeMileage,priceForExtraKm){
+        changeStateCarDetails(vehicleId,vehicleType,numofP,transmissionType,fuelType,registerNum,color,pricesForDaily,pricesForMonthly,freeMileage,priceForExtraKm,frontImage,backImage,sideImage,interiorImage){
             this.setState({
                 carDetails : {
                     vehicleId : vehicleId,
@@ -68,7 +68,11 @@ class CarManage extends Component {
                     pricesForMonthly : pricesForMonthly,
                     freeMileage : freeMileage,
                     priceForExtraKm : priceForExtraKm,
-                }
+                },
+                frontView : frontImage,
+                backView : backImage,
+                sideView : sideImage,
+                interiorView : interiorImage,
 
             })
         }

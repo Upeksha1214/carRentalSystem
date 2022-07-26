@@ -43,5 +43,20 @@ class CarService {
         })
         return await promise;
     }
+    getCarImage = async (carId,view) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('Car/getCarImage?carId='+carId+'&view='+view, {
+                responseType: 'blob',
+            })
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
 }
 export default new CarService();

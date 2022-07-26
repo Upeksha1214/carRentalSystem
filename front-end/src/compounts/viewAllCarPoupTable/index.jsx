@@ -51,6 +51,32 @@ const rows = [
 
 export default function ViewAllCarPopUpTable(props) {
 
+    const loadCarDetails=async (carId,brand, numOfp, TransType, fuelType, regNum, color,priceDaily,priceMonthly,freeMileage,pOfExtraKm) =>{
+        let frontImage;
+        let backImage;
+        let sideImage;
+        let interiorImage;
+
+        let res1 = await carService.getCarImage(carId,"Front");
+        if (res1.status===200) {
+            frontImage=URL.createObjectURL(res1.data)
+        }
+        let res2 = await carService.getCarImage(carId,"Back");
+        if (res1.status===200) {
+            backImage=URL.createObjectURL(res2.data)
+        }
+        let res3 = await carService.getCarImage(carId,"Side");
+        if (res1.status===200) {
+            sideImage=URL.createObjectURL(res3.data)
+        }
+        let res4 = await carService.getCarImage(carId,"Interior");
+        if (res1.status===200) {
+            interiorImage=URL.createObjectURL(res4.data)
+        }
+        props.data.changeStateCarDetails(carId, brand, numOfp, TransType,fuelType,regNum, color, priceDaily, priceMonthly, freeMileage, pOfExtraKm,frontImage,backImage,sideImage,interiorImage);
+
+    }
+
 
     const getAllCars=async () =>{
         let res = await carService.getAllCar();
@@ -130,8 +156,8 @@ export default function ViewAllCarPopUpTable(props) {
                                         return (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}
 
-                                                      onClick={() =>{
-                                                          props.data.changeStateCarDetails(row.carId,row.brand,row.numOfp,row.TransType,row.fuelType,row.regNum,row.color,row.priceDaily,row.priceMonthly,row.freeMileage,row.pOfExtraKm);
+                                                      onClick={async () =>{
+                                                          await loadCarDetails(row.carId, row.brand, row.numOfp, row.TransType, row.fuelType, row.regNum, row.color, row.priceDaily, row.priceMonthly, row.freeMileage, row.pOfExtraKm);
                                                           setShow(false)
                                                       }
                                                       }
