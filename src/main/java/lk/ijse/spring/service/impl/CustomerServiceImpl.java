@@ -37,19 +37,18 @@ public class CustomerServiceImpl implements CustomerService {
     private ModelMapper mapper;
 
     public void saveCustomer(RegisterCustomerDTO registerCustomerDTO) {
-        if (!repo.existsById(registerCustomerDTO.getId())) {
+        if(!repo.existsById(registerCustomerDTO.getId())) {
 
-            repo.save(mapper.map(registerCustomerDTO, Customer.class));
+            repo.save(mapper.map(registerCustomerDTO,Customer.class));
 
             if (!customerUserAccRepo.existsById(registerCustomerDTO.getUsername())) {
-                customerUserAccRepo.save(mapper.map(registerCustomerDTO, CustomerUserAccount.class));
-            } else {
-                throw new RuntimeException("UserAccount Already Exist");
+                customerUserAccRepo.save(mapper.map(registerCustomerDTO,CustomerUserAccount.class));
+
+            }else {
+                throw new RuntimeException("Customer Already Exist");
             }
-
-
-        } else {
-            throw new RuntimeException("Customer Already Exist");
+        }else {
+            throw new RuntimeException("UserAccount Already Exist");
         }
     }
 

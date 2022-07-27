@@ -12,7 +12,7 @@ import AdminDashBord from "../pages/admin/adminDashBord/adminDashBord";
 
  function App() {
   return (
-      <CarManage/>
+      <AddCustomer/>
   );
 }
 

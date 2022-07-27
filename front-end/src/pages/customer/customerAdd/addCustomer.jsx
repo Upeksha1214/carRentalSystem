@@ -6,6 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
+
+import CustomerService from "../../../services/customerService";
 import TableContainer from "@material-ui/core/TableContainer";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -13,30 +15,59 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
+import CarService from "../../../services/CarService";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 class AddCustomer extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            front: null,
+            frontImage: null,
             backImage: null,
+
+            frontView: null,
+            backView: null,
+
+
+            customerDerails :{
+                custId:'',
+                email:'',
+                userName:'',
+                password:'',
+                NicNum:'',
+                driverLicenceNum:'',
+                address:'',
+                contactNum:''
+            },
+            TextLabel: 'DRIVING LICENCE OR NIC NUMBER'
+        }
+    }
+    addCustomer =async () =>{
+
+
+        var customerDetails={
+            id:this.state.customerDerails.custId,
+            email:this.state.customerDerails.email,
+            nic:this.state.customerDerails.NicNum,
+            drivingLicence:this.state.customerDerails.driverLicenceNum,
+            address:this.state.customerDerails.address,
+            contactNumber:this.state.customerDerails.contactNum,
+            username:this.state.customerDerails.userName,
+            password:this.state.customerDerails.password,
+        }
+
+        let res = await CustomerService.addCustomer(customerDetails);
+        if (res.data.code==200) {
+            alert(res.data.message);
+
+        }else {
+        alert(res.data.message);
         }
     }
 
     render() {
 
-        function createData(name, calories, fat, carbs, protein, button) {
-            return {name, calories, fat, carbs, protein, button};
-        }
-
-        const rows = [
-            /* createData('C001', 'Nissan', 6.0, 24, 4.0, <Button variant="contained" color="secondary">delete</Button>),
-             createData('Ice cream sandwich', 237, 9.0, 37, 4.3 ,<Button variant="contained" color="secondary">delete</Button>),
-             createData('Eclair', 262, 16.0, 24, 6.0 ,<Button variant="contained" color="secondary">delete</Button>),
-             createData('Cupcake', 305, 3.7, 67, 4.3,<Button variant="contained" color="secondary">delete</Button>),
-             createData('Gingerbread', 356, 16.0, 49, 3.9 , <Button variant="contained" color="secondary">delete</Button>),*/
-        ];
         const {classes} = this.props
         return (
 
@@ -121,12 +152,125 @@ class AddCustomer extends Component {
                                 <div style={{width: '100vw', height: '20%'}}></div>
                             </Grid>
 
-                            <Grid item> <TextField id="outlined-basic" label="Customer Id" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="Email" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="UserName" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="New Password" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="Address" variant="outlined"/></Grid>
-                            <Grid item> <TextField id="outlined-basic" label="Color" variant="outlined"/></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Customer Id" variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.customerDerails.custId}
+                                                   onChange={(e) => {
+                                                       let data = this.state.customerDerails
+                                                       data.custId = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+
+                            /></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Email" variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.customerDerails.email}
+                                                   onChange={(e) => {
+                                                       let data = this.state.customerDerails
+                                                       data.email = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
+                            <Grid item> <TextField id="outlined-basic" label="UserName" variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.customerDerails.userName}
+                                                   onChange={(e) => {
+                                                       let data = this.state.customerDerails
+                                                       data.userName = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+
+                            /></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="New Password" variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.customerDerails.password}
+                                                   onChange={(e) => {
+                                                       let data = this.state.customerDerails
+                                                       data.password = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Address" variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.customerDerails.address}
+                                                   onChange={(e) => {
+                                                       let data = this.state.customerDerails
+                                                       data.address = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+                            <Grid item> <TextField id="outlined-basic" label="Contact Number" variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   value={this.state.customerDerails.contactNum}
+                                                   onChange={(e) => {
+                                                       let data = this.state.customerDerails
+                                                       data.contactNum = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
+                            <Grid item> <Autocomplete
+                                id="combo-box-demo"
+                                options={[{title: 'Driving Licence'}, {title: 'NIC Number'}]}
+                                getOptionLabel={(option) => option.title}
+                                style={{width: 300}}
+                                renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined"/>}
+                                onChange={(event, value) => {
+
+                                    switch (value.title) {
+                                        case "NIC Number" :
+                                            let data1 = this.state.customerDerails.driverLicenceNum='';
+                                            this.setState({
+                                                data1,
+                                                TextLabel: "NIC NUMBER",
+
+                                            });break;
+                                        case  "Driving Licence" :
+                                            let data2 = this.state.customerDerails.NicNum='';
+                                            this.setState({
+                                                data2,
+                                                TextLabel: "Driving Licence",
+                                            });break;
+                                    }
+
+
+                                    console.log(value.title)
+                                }}
+
+
+                            /></Grid>
+
+                            <Grid item> <TextField id="outlined-basic" label={this.state.TextLabel} variant="outlined"
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       switch (this.state.TextLabel) {
+                                                           case "NIC NUMBER" :
+                                                               let data1 = this.state.customerDerails
+                                                               data1.NicNum= e.target.value
+                                                               this.setState({data1});break;
+
+                                                           case  "Driving Licence" :
+                                                               let data2 = this.state.customerDerails
+                                                               data2.driverLicenceNum = e.target.value
+                                                               this.setState({data2});break;
+                                                       }
+                                                   }}
+                            /></Grid>
 
                             <Grid item className={classes.imageContainer}>
 
@@ -135,17 +279,21 @@ class AddCustomer extends Component {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: '75%',
-                                    backgroundImage: "url(" + this.state.front + ")",
+                                    backgroundImage: "url(" + this.state.frontView+ ")",
                                     backgroundSize: 'cover'
-                                }}></div>
+                                }}>
+                                </div>
+
                                 <div className={classes.imageDiv} style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: '75%',
-                                    backgroundImage: "url(" + this.state.backImage + ")",
+                                    backgroundImage: "url(" + this.state.backView + ")",
                                     backgroundSize: 'cover'
-                                }}></div>
+                                }}>
+
+                                </div>
 
                             </Grid>
 
@@ -160,7 +308,8 @@ class AddCustomer extends Component {
                                     type="file"
                                     onChange={(e) => {
                                         this.setState({
-                                            front: URL.createObjectURL(e.target.files[0])
+                                            frontView: URL.createObjectURL(e.target.files[0]),
+                                            front:e.target.files[0]
                                         })
                                     }}
                                 />
@@ -182,7 +331,8 @@ class AddCustomer extends Component {
                                     type="file"
                                     onChange={(e) => {
                                         this.setState({
-                                            backImage: URL.createObjectURL(e.target.files[0])
+                                            backView: URL.createObjectURL(e.target.files[0]),
+                                            front:e.target.files[0]
                                         })
                                     }}
                                 />
@@ -212,7 +362,12 @@ class AddCustomer extends Component {
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
 
-                                }}>Add</Button></Grid>
+                                }}
+                                onClick={async () => {
+                                this.addCustomer();
+
+                            }}
+                                >Add</Button></Grid>
 
                             <Grid item> <TextField id="outlined-basic" label="Search Id" variant="outlined"/></Grid>
 
@@ -261,7 +416,7 @@ class AddCustomer extends Component {
                     </div>
                 </div>
 
-                <div className={classes.tableContainer} style={{}}>
+                {/*<div className={classes.tableContainer} style={{}}>
                     <div className={classes.tableView}>
                         <TableContainer component={Paper}>
                             <Table className={classes.table} aria-label="simple table" s>
@@ -295,7 +450,7 @@ class AddCustomer extends Component {
                             </Table>
                         </TableContainer>
                     </div>
-                </div>
+                </div>*/}
             </Fragment>
         )
     }

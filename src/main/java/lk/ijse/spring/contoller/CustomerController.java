@@ -23,7 +23,7 @@ import java.util.List;
     @RequestMapping("customer")
 public class CustomerController {
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @PostMapping(path = "CustomerRegister",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil registerCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO){
