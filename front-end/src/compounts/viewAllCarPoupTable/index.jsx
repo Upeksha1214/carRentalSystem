@@ -52,6 +52,7 @@ const rows = [
 export default function ViewAllCarPopUpTable(props) {
 
     const loadCarDetails=async (carId,brand, numOfp, TransType, fuelType, regNum, color,priceDaily,priceMonthly,freeMileage,pOfExtraKm) =>{
+
         let frontImage;
         let backImage;
         let sideImage;
@@ -79,15 +80,21 @@ export default function ViewAllCarPopUpTable(props) {
 
 
     const getAllCars=async () =>{
+
+        rows.length=0;
+
         let res = await carService.getAllCar();
-        if (res.data.code==200){
+        if (res.data.code!==undefined){
             var i=0;
             for (let dataKey of res.data.data) {
                 rows[i]=createData(dataKey.vehicleId,dataKey.brand,dataKey.numOfPassenger,dataKey.transmissionType,dataKey.fuelType,dataKey.registerNumber,dataKey.color,dataKey.freeMileageForPriceAndDuration,dataKey.priceOfExtraKm,dataKey.priceOfRentDurationDaily,dataKey.priceOfRentDurationMonthly)
                 i++;
             }
             setShow(true)
+        }else {
+            alert("car is not found ");
         }
+
 
     }
 

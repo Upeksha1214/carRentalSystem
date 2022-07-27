@@ -86,5 +86,34 @@ class CarService {
         })
         return await promise;
     }
+
+    deleteCar =async (carId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.delete('Car/deleteCar?carId='+carId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+    deleteCarImages =async (carId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.delete('Car/deleteCarImage?carId='+carId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
 }
 export default new CarService();

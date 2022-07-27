@@ -107,8 +107,8 @@ public class CarController {
     }
 
     @DeleteMapping(path = "deleteCar", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteCar(CarDTO carDTO) {
-        carService.deleteCar(carDTO);
+    public ResponseUtil deleteCar(@RequestParam String carId) {
+        carService.deleteCar(carId);
         return new ResponseUtil(200, "car Delete success", null);
     }
 

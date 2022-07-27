@@ -166,6 +166,54 @@ class CarManage extends Component {
         }
     }
 
+    deleteCar=async () =>{
+
+        let res =await CarService.deleteCar(this.state.carDetails.vehicleId);
+        if (res.status==200){
+
+
+            let res =await CarService.deleteCarImages(this.state.carDetails.vehicleId);
+            if (res.data.code==200){
+                alert("Car Deleted Success")
+                this.clearAllState()
+            }
+        }else {
+            alert("Car Delete Fail...")
+        }
+
+    }
+
+    clearAllState=() =>{
+        this.setState({
+            frontImage: null,
+            backImage : null,
+            sideImage : null,
+            interiorImage : null,
+
+            frontView : null,
+            backView : null,
+            sideView : null,
+            interiorView : null,
+
+            carDetails : {
+                vehicleId : '',
+                vehicleType : '',
+                numofP : '',
+                transmissionType : '',
+                fuelType :'',
+                registerNum : '',
+                color : '',
+                pricesForDaily : '',
+                pricesForMonthly : '',
+                freeMileage : '',
+                priceForExtraKm : '',
+            }
+
+        })
+    }
+
+
+
 
 
     render() {
@@ -629,7 +677,13 @@ class CarManage extends Component {
                                     color: '#3BB9FF',
                                     borderRadius: "15px",
                                     boxShadow: '1px 1px 5px 0.2px',
-                                }}>Delete</Button>
+                                }}
+                                        onClick={async () => {
+                                            this.deleteCar();
+
+                                        }}
+
+                                >Delete</Button>
                             </Grid>
                             <Grid item>
                                 <ViewAllCarPopUpTable data={{changeStateCarDetails:this.changeStateCarDetails.bind(this)}}/>
