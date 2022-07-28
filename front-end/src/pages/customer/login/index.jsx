@@ -9,6 +9,9 @@ import {ImLocation} from "react-icons/im";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import logo from "../../../assets/image/logo.svg"
+import {TbPower} from "react-icons/tb";
+import {RiAddCircleFill} from "react-icons/ri";
+import RegisterCustomer from "../../register";
 
 
 class Login extends Component {
@@ -68,6 +71,38 @@ class Login extends Component {
                             <div style={{color: 'white'}}>Service</div>
                             <div style={{color: 'white'}}>Blog</div>
                             <div style={{color: 'white'}}>Contact</div>
+                            <div style={{color: 'white'}}>
+                                <Button className={classes.loginButton}
+
+                                        startIcon={<TbPower/>}
+
+                                        onPointerEnter={(e) => {
+                                            e.target.style.color = 'white'
+                                            console.log("ok")
+                                        }}
+
+                                        onPointerLeave={(e) => {
+                                            e.target.style.color = "white"
+                                            console.log("cancel")
+                                        }}
+                                >Login</Button></div>
+                            <div>
+                                {/*<Button className={classes.registerButton}
+
+                                        startIcon={<RiAddCircleFill/>}
+
+                                        onPointerEnter={(e) => {
+                                            e.target.style.color = 'white'
+                                            console.log("ok")
+                                        }}
+
+                                        onPointerLeave={(e) => {
+                                            e.target.style.color = 'white'
+                                            console.log("cancel")
+                                        }}
+                                >Register</Button>*/}
+                                <RegisterCustomer/>
+                            </div>
 
                         </div>
                     </div>

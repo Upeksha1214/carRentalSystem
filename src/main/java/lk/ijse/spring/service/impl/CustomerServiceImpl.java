@@ -16,6 +16,7 @@ import lk.ijse.spring.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,6 +37,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private ModelMapper mapper;
 
+    @Transactional
+    @Override
     public void saveCustomer(RegisterCustomerDTO registerCustomerDTO) {
         if(!repo.existsById(registerCustomerDTO.getId())) {
 
@@ -45,10 +48,11 @@ public class CustomerServiceImpl implements CustomerService {
                 customerUserAccRepo.save(mapper.map(registerCustomerDTO,CustomerUserAccount.class));
 
             }else {
-                throw new RuntimeException("Customer Already Exist");
+                throw new RuntimeException("UserAccount Already Exist");
             }
         }else {
-            throw new RuntimeException("UserAccount Already Exist");
+
+            throw new RuntimeException("Customer Already Exist");
         }
     }
 

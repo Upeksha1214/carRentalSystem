@@ -58,12 +58,13 @@ class AddCustomer extends Component {
         }
 
         let res = await CustomerService.addCustomer(customerDetails);
-        if (res.data.code==200) {
-            alert(res.data.message);
 
-        }else {
-        alert(res.data.message);
+        if (res.code != 'ERR_BAD_REQUEST') {
+            alert(res.data.message);
+        } else {
+            alert(res.response.data.message);
         }
+
     }
 
     render() {

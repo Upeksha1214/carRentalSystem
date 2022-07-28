@@ -1,4 +1,4 @@
-import myImage from "../../../assets/image/av.jpg";
+import myImage from "../../../assets/image/car2.jpg";
 
 export const styleSheet = {
 
@@ -127,7 +127,16 @@ export const styleSheet = {
     },
 
 
-    form_container: {},
+    form_container: {
 
+    },
+
+    loginButton:{
+    },
+
+
+    registerButton:{
+
+    },
 
 }
