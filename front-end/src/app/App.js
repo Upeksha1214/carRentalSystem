@@ -13,7 +13,7 @@ import RegisterCustomer from "../pages/register";
 
  function App() {
   return (
-      <RentalRequestAdd/>
+      <Login/>
   );
 }
 

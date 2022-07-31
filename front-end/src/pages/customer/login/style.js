@@ -21,7 +21,6 @@ export const styleSheet = {
     title_container: {
         display: 'flex',
         flexDirection: 'column',
-        width: '100vw',
         height: '100vh',
         /*backgroundColor:'#008000',*/
         /*background: 'rgba(255, 255, 255, 0.17)'*/
@@ -67,7 +66,7 @@ export const styleSheet = {
         background: 'rgba(255, 255, 255, 0)'
     },
     icon_container: {
-        width: '900px',
+        width: '870px',
         position: 'relative',
         display: 'flex',
         flexDirection: 'row',
@@ -114,7 +113,7 @@ export const styleSheet = {
         flexDirection: 'row',
         left: '50px',
 
-        width: '300px'
+        width: '280px'
 
     },
 
