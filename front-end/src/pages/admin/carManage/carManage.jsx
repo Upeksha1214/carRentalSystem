@@ -217,18 +217,6 @@ class CarManage extends Component {
 
 
     render() {
-        function createData(name, calories, fat, carbs, protein, button) {
-            return {name, calories, fat, carbs, protein, button};
-        }
-
-        const rows = [
-            /* createData('C001', 'Nissan', 6.0, 24, 4.0, <Button variant="contained" color="secondary">delete</Button>),
-             createData('Ice cream sandwich', 237, 9.0, 37, 4.3 ,<Button variant="contained" color="secondary">delete</Button>),
-             createData('Eclair', 262, 16.0, 24, 6.0 ,<Button variant="contained" color="secondary">delete</Button>),
-             createData('Cupcake', 305, 3.7, 67, 4.3,<Button variant="contained" color="secondary">delete</Button>),
-             createData('Gingerbread', 356, 16.0, 49, 3.9 , <Button variant="contained" color="secondary">delete</Button>),*/
-        ];
-
 
         const {classes} = this.props
         return (

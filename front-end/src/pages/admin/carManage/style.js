@@ -15,7 +15,7 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'center',
         width : '95%',
-       /* marginTop: '105px',*/
+        /* marginTop: '105px',*/
         height: '540px',
 
 

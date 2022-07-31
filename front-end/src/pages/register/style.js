@@ -20,7 +20,7 @@ export const styleSheet={
         width : '80%',
         display : 'flex',
         flexDirection : 'column',
-        /*  backgroundColor: 'red',*/
+        /*   backgroundColor: 'red',*/
         alignItems : 'center',
         justifyContent : 'space-around'
     },
@@ -37,14 +37,17 @@ export const styleSheet={
     }
     ,
     textFieldContainerCustomerDetails: {
-        /*  marginLeft : '55px',*/
+        /*    marginLeft : '24px',*/
         height : '100%',
-        width : '90%',
+        width : '100%',
+        borderRadius : '10px',
+        borderColor : 'blue',
+        /*  boxShadow : '10px 10px 10px 10px',*/
         display : 'flex',
         flexDirection : 'column',
-        /*  backgroundColor: 'green',*/
+        /*  backgroundColor: 'rgba(106,102,102,0.53)',*/
         alignItems : 'center',
-        justifyContent : 'space-evenly'
+        justifyContent : 'center'
     },
 
     ImageVerifyContainer : {
@@ -92,6 +95,14 @@ export const styleSheet={
         flexDirection : 'row',
         alignItems : 'center',
         justifyContent : 'space-around'
+    },
+
+    imageNameContainer : {
+        width : '100%',
+        display : 'flex',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent: 'space-around'
     }
 
 

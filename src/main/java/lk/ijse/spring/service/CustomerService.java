@@ -12,5 +12,8 @@ public interface CustomerService {
     void updateCustomerInformation(CustomerDTO customerDTO);
     List<Car> viewCars();
     void rentalRequest(RentalRequestDTO rentalRequestDTO);
+    void existUserCustomerAccount(String userName);
+    void existEmail(String email);
+    String getNewId();
 
 }

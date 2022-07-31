@@ -37,6 +37,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private ModelMapper mapper;
 
+
+
     @Transactional
     @Override
     public void saveCustomer(RegisterCustomerDTO registerCustomerDTO) {
@@ -56,6 +58,45 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
+    @Override
+    public void existUserCustomerAccount(String userName){
+
+        boolean b = customerUserAccRepo.existsById(userName);
+        if (b==true){
+            throw new RuntimeException("UserAccount Already Exist");
+        }
+    }
+
+    @Override
+    public void existEmail(String email) {
+        String s = repo.existsByEmail(email);
+        if (s!=null){
+            throw new RuntimeException("Email Already Exist");
+        }
+    }
+
+    @Override
+    public String getNewId() {
+        String lastCustId = repo.getLastCustId();
+
+        if (lastCustId!=null){
+
+            String[] split = lastCustId.split("-");
+            long index = Long.parseLong(split[1]);
+
+            long incrementId=++index;
+
+            if (incrementId<10){
+                return "C-00"+incrementId ;
+            }else if (incrementId>=10 && index<100){
+                return "C-0"+ incrementId ;
+            }else if(incrementId>=100){
+                return "C-"+ incrementId ;
+            }
+            return "C-001";
+        }
+        return "C-001";
+    }
 
 
     @Override

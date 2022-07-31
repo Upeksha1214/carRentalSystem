@@ -6,6 +6,7 @@ import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.service.CustomerService;
 import lk.ijse.spring.util.ResponseUtil;
+import lk.ijse.spring.util.SearchFile;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,6 +26,21 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private SearchFile searchFile;
+
+    @GetMapping(path = "genarateCustId")
+    public ResponseUtil getNewCustId(){
+        String newId = customerService.getNewId();
+        return new ResponseUtil(200,"new Customer Id Received",newId);
+    }
+
+    @GetMapping(path = "ifExistEmail")
+    public ResponseUtil ifExistEmail(@RequestParam String email){
+        customerService.existEmail(email);
+        return new ResponseUtil(200,"Email Checked OK",null);
+    }
+
     @PostMapping(path = "CustomerRegister",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil registerCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO){
 
@@ -32,26 +48,47 @@ public class CustomerController {
         return new ResponseUtil(200,"Customer added complete",null);
     }
 
-    @SneakyThrows
-    @PostMapping(path = "uploadIdImage")
-    public ResponseUtil uploadImageID(@RequestParam("NIC") MultipartFile multipartFiles, @RequestParam String custId){
-
-        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\idCardImage";
-        String imageName=custId+"ID_CARD"+".jpeg";
-        Files.copy(multipartFiles.getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
-
-        return new ResponseUtil(200,"ID_CARD image added success..",null);
+    @GetMapping(path = "ifExistUserAccount")
+    public ResponseUtil ifExistUserAccount(@RequestParam String userName){
+        customerService.existUserCustomerAccount(userName);
+        return new ResponseUtil(200,"UserAccount Free",null);
     }
 
     @SneakyThrows
+    @PostMapping(path = "uploadIdImage")
+    public ResponseUtil uploadImageID(@RequestParam("NIC") MultipartFile [] multipartFiles, @RequestParam String custId){
+
+        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\idCardImage";
+        String [] view={"Front","Back"};
+        for (int i=0; i<view.length; i++){
+            String imageName=custId+"ID_CARD"+view[i]+".jpeg";
+            if(!searchFile.searchFile(pathDirectory, imageName)){
+                Files.copy(multipartFiles[i].getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+            }else {
+                return new ResponseUtil(400,"ID_CARD image Duplicate..",null);
+            }
+        }
+        return new ResponseUtil(200,"ID_CARD image added success..",null);
+    }
+
+
+
+    @SneakyThrows
     @PostMapping(path = "uploadLicenceImage")
-    public ResponseUtil uploadImageLicence(@RequestParam("Licence")MultipartFile multipartFiles, @RequestParam String custId){
+    public ResponseUtil uploadImageLicence(@RequestParam("Licence")MultipartFile [] multipartFiles, @RequestParam String custId){
 
         String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\image\\licenceImage";
-        String imageName=custId+"Licence_CARD"+".jpeg";
-        Files.copy(multipartFiles.getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+        String [] view={"Front","Back"};
 
-        return new ResponseUtil(200,"Licence_Card image added success..",null);
+        for (int i=0; i<view.length; i++){
+            String imageName=custId+"Licence_CARD"+view[i]+".jpeg";
+            if(!searchFile.searchFile(pathDirectory, imageName)){
+                Files.copy(multipartFiles[i].getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+            }else {
+                return new ResponseUtil(400,"License_Card image Duplicate..",null);
+            }
+        }
+        return new ResponseUtil(200,"License_Card image added success..",null);
     }
 
     @PutMapping
