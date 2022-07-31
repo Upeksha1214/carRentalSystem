@@ -1,9 +1,9 @@
-import img1 from "../image/A.jpeg";
-import img2 from "../image/A.jpeg";
-import img3 from "../image/A.jpeg";
-import img4 from "../image/A.jpeg";
-import img5 from "../image/A.jpeg";
-import img6 from "../image/A.jpeg";
+import img1 from "../image/bmw740.jpg";
+import img2 from "../image/bmw-7.jpg";
+import img3 from "../image/Rolls Royce Ghost.jpg";
+import img4 from "../image/Range Rover.jpg";
+import img5 from "../image/Sedan SUV.jpg";
+import img6 from "../image/Benz A .jpg";
 
 const carData = [
     {

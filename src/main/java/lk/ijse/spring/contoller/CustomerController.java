@@ -109,4 +109,10 @@ public class CustomerController {
         return new ResponseUtil(200,"All car Details received",null);
     }
 
+    @PostMapping(path = "checkAccount", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseUtil checkUserAccount(String userName,String password){
+        customerService.checkUserAccount(userName,password);
+        return new ResponseUtil(200,"Login SuccessFull",null);
+    }
+
 }

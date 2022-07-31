@@ -98,6 +98,19 @@ public class CustomerServiceImpl implements CustomerService {
         return "C-001";
     }
 
+    @Override
+    public void checkUserAccount(String userName,String password) {
+        if (customerUserAccRepo.existsById(userName)){
+            String pass = customerUserAccRepo.getPassWordByUserName(userName);
+            if (!pass.equals(password)){
+                throw new RuntimeException("Password Incorrect");
+            }
+        }else {
+            throw new RuntimeException("userName Incorrect");
+        }
+
+    }
+
 
     @Override
     public void updateCustomerInformation(CustomerDTO customerDTO) {

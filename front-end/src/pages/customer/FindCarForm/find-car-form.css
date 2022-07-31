@@ -31,13 +31,13 @@
 }
 
 .form {
-    background: #799c55;
+    background: #93abd7;
     padding-top: 55px;
     padding-bottom: 50px;
     padding-left: 15px;
     padding-right: 15px;
     position: relative;
-    bottom: 100px;
+    bottom: 70px;
     width: 1200px;
     margin-left: -400px;
 }

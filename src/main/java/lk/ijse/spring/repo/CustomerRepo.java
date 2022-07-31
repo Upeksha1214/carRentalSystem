@@ -15,4 +15,6 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
 
     @Query(value = "select id from Customer order by id desc LIMIT 1", nativeQuery = true)
     public String getLastCustId();
+
+
 }
