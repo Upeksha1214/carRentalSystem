@@ -16,12 +16,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import FindCarForm from "../customer/FindCarForm";
 import carData from "../../assets/CarData/carData";
-import CarItem from "./CarItem";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import Link from "@material-ui/core/Link";
 import {Container, ListGroup} from "reactstrap";
 import RegisterCustomer from "../register";
 import LoginCustomer from "../loginCustomer";
+import CarDetails from "../../compounts/customer/cutomerData/customerData";
 
 const quickLinks = [
     {
@@ -108,12 +108,12 @@ class Login extends Component {
                         <img src={logo} alt=""/>
 
                         <div className={classes.button_container}>
-                            <Button variant="contained" style={{backgroundColor: 'green', color: 'white'}}>
+                            <Button  style={{ color: 'white'}}>
                                 Home
                             </Button>
 
                             <div style={{color: 'white'}}>Cars</div>
-                            <div style={{color: 'white'}}>Pages</div>
+                            <div style={{color: 'white'}}>Pages</div>xv/
                             <div style={{color: 'white'}}>Service</div>
                             <div style={{color: 'white'}}>Blog</div>
                             <div style={{color: 'white'}}>Contact</div>
@@ -141,7 +141,7 @@ class Login extends Component {
 
                             <LoginCustomer ref={instance => { this.child = instance; }} />
 
-                            <div style={{color: 'white'}}>
+                            <div style={{color: 'white',}}>
 
                             <RegisterCustomer/>
                             </div>
@@ -152,47 +152,33 @@ class Login extends Component {
             </div>
 
 
+            <body className="body">
 
-
-
-
-                <div className={classes.hero__form}>
-                    <Container>
-                        <Row className={classes.form__row}>
-                            <Col lg="4" md="4">
-                            </Col>
-
-                            <Col lg="8" md="8" sm="12">
-                                <FindCarForm/>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-
-
-
-
-
-
-
-
-
+            <div className={classes.hero__form}>
                 <Container>
-                    <Row>
-                        <Col lg="12" className="text-center mb-5">
-                            <h6 className="section__subtitle">Come with</h6>
-                            <h2 className="section__title">Hot Offers</h2>
+                    <Row className={classes.form__row}>
+                        <Col lg="4" md="4">
                         </Col>
 
-                        {carData.slice(0, 6).map((item) => (
-                            <CarItem item={item} key={item.id} />
-                        ))}
+                        <Col lg="8" md="8" sm="12">
+                            <FindCarForm/>
+                        </Col>
                     </Row>
                 </Container>
+            </div>
 
 
+            <Container>
+                <Row>
+                    <Col lg="12" className="text-center mb-5">
+                        <h6 className="section__subtitle">Come with</h6>
+                        <h2 className="section__title">Hot Offers</h2>
+                    </Col>
+                    <CarDetails/>
+                </Row>
+            </Container>
 
-
+            </body>
 
 
             <footer className="footer">

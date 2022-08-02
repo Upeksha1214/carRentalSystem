@@ -101,31 +101,19 @@
     -moz-transition: all .35s;
     transition: all .35s;
 }
+.body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color:  #61a5eb;
+    text-align: var(--bs-body-text-align) ;
+    background-color: #0d1b36 ;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 .footer {
     font-size: 12px;
     background: #000000;

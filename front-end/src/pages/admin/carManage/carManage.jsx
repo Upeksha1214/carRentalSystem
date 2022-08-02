@@ -39,35 +39,41 @@ class CarManage extends Component {
 
 
             carDetails: {
-                vehicleId: '',
-                vehicleType: '',
-                numofP: '',
-                transmissionType: '',
-                fuelType: '',
-                registerNum: '',
-                color: '',
-                pricesForDaily: '',
-                pricesForMonthly: '',
-                freeMileage: '',
-                priceForExtraKm: '',
+                vehicleId : '',
+                vehicleType : '',
+                brand : '',
+                NumOfPassenger : '',
+                transmissionType : '',
+                fuelType :'',
+                dailyPrice :'',
+                monthlyPrice :'',
+                dailyFreeKm : '',
+                monthlyFreeKm : '',
+                priceOfExtraKm : '',
+                registerNumber : '',
+                color : '',
             }
         }
     }
 
-        changeStateCarDetails(vehicleId,vehicleType,numofP,transmissionType,fuelType,registerNum,color,pricesForDaily,pricesForMonthly,freeMileage,priceForExtraKm,frontImage,backImage,sideImage,interiorImage){
+        changeStateCarDetails(vehicleId,vehicleType,brand,NumOfPassenger,transmissionType,fuelType,dailyPrice,
+                              monthlyPrice,dailyFreeKm ,monthlyFreeKm ,priceOfExtraKm,
+                              registerNumber,color,frontImage,backImage,sideImage,interiorImage){
             this.setState({
                 carDetails : {
-                    vehicleId : vehicleId,
+                    vehicleId :vehicleId,
                     vehicleType : vehicleType,
-                    numofP : numofP,
-                    transmissionType : transmissionType,
+                    brand : brand,
+                    NumOfPassenger : NumOfPassenger,
+                    transmissionType :transmissionType,
                     fuelType :fuelType,
-                    registerNum : registerNum,
+                    dailyPrice :dailyPrice,
+                    monthlyPrice :monthlyPrice,
+                    dailyFreeKm : dailyFreeKm ,
+                    monthlyFreeKm :monthlyFreeKm ,
+                    priceOfExtraKm : priceOfExtraKm,
+                    registerNumber : registerNumber,
                     color : color,
-                    pricesForDaily : pricesForDaily,
-                    pricesForMonthly : pricesForMonthly,
-                    freeMileage : freeMileage,
-                    priceForExtraKm : priceForExtraKm,
                 },
                 frontView : frontImage,
                 backView : backImage,
@@ -95,15 +101,17 @@ class CarManage extends Component {
 
         var carDetails = {
             vehicleId : this.state.carDetails.vehicleId,
-            brand  : this.state.carDetails.vehicleType,
-            numOfPassenger : this.state.carDetails.numofP,
+            vehicleType : this.state.carDetails.vehicleType,
+            brand  : this.state.carDetails.brand,
+            NumOfPassenger : this.state.carDetails.NumOfPassenger,
             transmissionType : this.state.carDetails.transmissionType,
             fuelType : this.state.carDetails.fuelType,
-            priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
-            priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
-            freeMileageForPriceAndDuration : this.state.carDetails.freeMileage,
-            priceOfExtraKm : this.state.carDetails.priceForExtraKm,
-            registerNumber : this.state.carDetails.registerNum,
+            dailyPrice : this.state.carDetails.dailyPrice ,
+            monthlyPrice : this.state.carDetails.monthlyPrice,
+            dailyFreeKm : this.state.carDetails.dailyFreeKm,
+            monthlyFreeKm : this.state.carDetails.monthlyFreeKm,
+            priceOfExtraKm : this.state.carDetails.priceOfExtraKm,
+            registerNumber : this.state.carDetails.registerNumber,
             color : this.state.carDetails.color,
             state : 'Parking'
         }
@@ -122,15 +130,17 @@ class CarManage extends Component {
     updateCar=async () =>{
         var carUpdateDetails = {
             vehicleId : this.state.carDetails.vehicleId,
-            brand  : this.state.carDetails.vehicleType,
-            numOfPassenger : this.state.carDetails.numofP,
+            vehicleType : this.state.carDetails.vehicleType,
+            brand  : this.state.carDetails.brand,
+            NumOfPassenger : this.state.carDetails.NumOfPassenger,
             transmissionType : this.state.carDetails.transmissionType,
             fuelType : this.state.carDetails.fuelType,
-            priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
-            priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
-            freeMileageForPriceAndDuration : this.state.carDetails.freeMileage,
-            priceOfExtraKm : this.state.carDetails.priceForExtraKm,
-            registerNumber : this.state.carDetails.registerNum,
+            dailyPrice : this.state.carDetails.dailyPrice ,
+            monthlyPrice : this.state.carDetails.monthlyPrice,
+            dailyFreeKm : this.state.carDetails.dailyFreeKm,
+            monthlyFreeKm : this.state.carDetails.monthlyFreeKm,
+            priceOfExtraKm : this.state.carDetails.priceOfExtraKm,
+            registerNumber : this.state.carDetails.registerNumber,
             color : this.state.carDetails.color,
             state : 'Parking'
         }
@@ -198,15 +208,17 @@ class CarManage extends Component {
             carDetails : {
                 vehicleId : '',
                 vehicleType : '',
-                numofP : '',
+                brand : '',
+                NumOfPassenger : '',
                 transmissionType : '',
                 fuelType :'',
-                registerNum : '',
+                dailyPrice :'',
+                monthlyPrice :'',
+                dailyFreeKm : '',
+                monthlyFreeKm : '',
+                priceOfExtraKm : '',
+                registerNumber : '',
                 color : '',
-                pricesForDaily : '',
-                pricesForMonthly : '',
-                freeMileage : '',
-                priceForExtraKm : '',
             }
 
         })
@@ -326,15 +338,27 @@ class CarManage extends Component {
                                                    }}
                             /></Grid>
 
+                            <Grid item> <TextField size={"small"} id="outlined-basic" label="Brand" variant="outlined"
+                                                   value={this.state.carDetails.brand}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.brand = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Number of passengers"
                                                    variant="outlined"
                                                    InputLabelProps={{
                                                        shrink: true,
                                                    }}
-                                                   value={this.state.carDetails.numofP}
+                                                   value={this.state.carDetails.NumOfPassenger}
                                                    onChange={(e) => {
                                                        let data = this.state.carDetails
-                                                       data.numofP = e.target.value
+                                                       data.NumOfPassenger = e.target.value
                                                        this.setState({ data })
                                                    }}
                             /></Grid>
@@ -357,7 +381,7 @@ class CarManage extends Component {
 
                             <Grid item><TextField
                                  size={"small"}
-                                  label="Transmission type." variant="outlined" value={this.state.carDetails.fuelType}
+                                  label="Fuel Type." variant="outlined" value={this.state.carDetails.fuelType}
 
                                   InputLabelProps={{
                                       shrink: true,
@@ -376,64 +400,77 @@ class CarManage extends Component {
                                                   InputLabelProps={{
                                                       shrink: true,
                                                   }}
-                                                  value={this.state.carDetails.pricesForDaily}
+                                                  value={this.state.carDetails.dailyPrice}
 
                                                   onChange={(e) => {
                                                       let data = this.state.carDetails
-                                                      data.pricesForDaily = e.target.value
+                                                      data.dailyPrice = e.target.value
                                                       this.setState({ data })
                                                   }}
                             /></Grid>
 
                             <Grid item> <TextField size={"small"} id="outlined-basic"
                                                    label="Prices for the rent durations Monthly" variant="outlined"
-                                                   value={this.state.carDetails.pricesForMonthly}
+                                                   value={this.state.carDetails.monthlyPrice}
                                                    InputLabelProps={{
                                                        shrink: true,
                                                    }}
                                                    onChange={(e) => {
                                                        let data = this.state.carDetails
-                                                       data.pricesForMonthly = e.target.value
+                                                       data.monthlyPrice = e.target.value
                                                        this.setState({ data })
                                                    }}
                             /></Grid>
 
 
                             <Grid item> <TextField size={"small"} id="outlined-basic"
-                                                   label="Free mileage for the price and duration" variant="outlined"
-                                                   value={this.state.carDetails.freeMileage}
+                                                   label="Free mileage daily Km" variant="outlined"
+                                                   value={this.state.carDetails.dailyFreeKm}
                                                    InputLabelProps={{
                                                        shrink: true,
                                                    }}
                                                    onChange={(e) => {
                                                        let data = this.state.carDetails
-                                                       data.freeMileage = e.target.value
+                                                       data.dailyFreeKm = e.target.value
+                                                       this.setState({ data })
+                                                   }}
+                            /></Grid>
+
+                            <Grid item> <TextField size={"small"} id="outlined-basic"
+                                                   label="Free mileage monthly Km" variant="outlined"
+                                                   value={this.state.carDetails.monthlyFreeKm}
+                                                   InputLabelProps={{
+                                                       shrink: true,
+                                                   }}
+                                                   onChange={(e) => {
+                                                       let data = this.state.carDetails
+                                                       data.monthlyFreeKm = e.target.value
                                                        this.setState({ data })
                                                    }}
                             /></Grid>
 
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Price for extra KM"
                                                    variant="outlined"
-                                                   value={this.state.carDetails.priceForExtraKm}
+                                                   value={this.state.carDetails.priceOfExtraKm}
                                                    InputLabelProps={{
                                                        shrink: true,
                                                    }}
                                                    onChange={(e) => {
                                                        let data = this.state.carDetails
-                                                       data.priceForExtraKm = e.target.value
+                                                       data.priceOfExtraKm = e.target.value
                                                        this.setState({ data })
                                                    }}
                             /></Grid>
 
                             <Grid item> <TextField size={"small"} id="outlined-basic" label="Registration number"
                                                    variant="outlined"
-                                                   value={this.state.carDetails.registerNum}
+                                                   value={this.state.carDetails.registerNumber}
                                                    InputLabelProps={{
                                                        shrink: true,
                                                    }}
                                                    onChange={(e) => {
                                                        let data = this.state.carDetails
-                                                       data.registerNum = e.target.value
+                                                       data.registerNumber = e.target.value
                                                        this.setState({ data })
                                                    }}
                             /></Grid>

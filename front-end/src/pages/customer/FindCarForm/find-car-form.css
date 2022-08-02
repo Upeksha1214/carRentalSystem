@@ -31,7 +31,7 @@
 }
 
 .form {
-    background: #93abd7;
+    background: #1d1a2a;
     padding-top: 55px;
     padding-bottom: 50px;
     padding-left: 15px;
@@ -39,7 +39,7 @@
     position: relative;
     bottom: 70px;
     width: 1200px;
-    margin-left: -400px;
+    margin-left: -420px;
 }
 
 .select__group {

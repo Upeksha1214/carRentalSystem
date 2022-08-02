@@ -1,4 +1,4 @@
-import myImage from "../../assets/image/car2.jpg";
+import myImage from "../../assets/image/gtrBack.jpg";
 
 export const styleSheet = {
 
@@ -74,6 +74,7 @@ export const styleSheet = {
         display: 'flex',
         flexDirection: 'row',
         left: '233px',
+        color:'white',
 
     },
 
@@ -81,7 +82,6 @@ export const styleSheet = {
         display: 'flex',
         flexDirection: 'row',
         left: '50px',
-
         width: '300px'
     },
     mobileNumberList: {
