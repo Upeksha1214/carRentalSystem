@@ -243,7 +243,7 @@ class RegisterCustomer extends Component{
             <>
                 <ReactButton
                     startIcon={<RiAddCircleFill/>}
-                    style={{color: '#889988', TbPower :{color: '#898'}, flexShrink:1}}
+                    style={{color: 'white', TbPower :{color: '#898'}, flexShrink:1}}
                     onClick={async () =>{
                        let res = await CustomerService.genarateNewCustomerId();
                         if (res.code != 'ERR_BAD_REQUEST') {

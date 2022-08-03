@@ -82,14 +82,18 @@ export const styleSheet = {
         display: 'flex',
         flexDirection: 'row',
         left: '50px',
-        width: '300px'
+        width: '300px',
+
     },
     mobileNumberList: {
+
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        left: '-55px',
+        left: '-70px',
         justifyContent: 'center',
+        top:'5px',
+        fontFamily:'Oswald, sans-serif',
 
     },
 
@@ -108,6 +112,8 @@ export const styleSheet = {
         position: 'relative',
         left: '-55px',
         justifyContent: 'center',
+        fontFamily:'Oswald, sans-serif',
+        top:'5px',
     },
 
 
@@ -126,6 +132,8 @@ export const styleSheet = {
         position: 'relative',
         left: '-55px',
         justifyContent: 'center',
+        top:'5px',
+        fontFamily:'Oswald, sans-serif',
     },
 
 

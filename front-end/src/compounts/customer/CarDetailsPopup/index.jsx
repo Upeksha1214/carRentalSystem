@@ -18,11 +18,18 @@ function CarDetailsPopUp(props) {
     return (
         <>
             <button className=" w-50 car_item-btn car_btn-details"
-                    onClick={handleShow} style={{color:'white'}}>
+                    onClick={handleShow} style={{
+                color: '#716fd5', background: '#fdc575',
+                borderRadius: 0,
+                border: 'none',
+                outline: 'none',
+                padding: '8px 0px',fontWeight:'500',
+
+            }}>
                 Car Details
             </button>
 
-            <Modal style={{ color : 'blue',  background: 'rgba(255, 255, 255, 0)' , boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(8.8px)'}} size={"lg"} show={show} onHide={handleClose}>
+            <Modal style={{ color : 'blue', background: 'rgba(255, 255, 255, 0)' , boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(8.8px)'}} size={"lg"} show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     {/*<img src={icon} alt=""/>*/}
                     <div style={{width : '150px'}}></div>

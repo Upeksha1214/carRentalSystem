@@ -83,5 +83,15 @@ public class CarServiceImpl implements CarService {
         }
     }
 
+    @Override
+    public CarDTO getCarById(String carId) {
+        if (carRepo.existsById(carId)){
+            return mapper.map(carRepo.getVehicleById(carId),CarDTO.class);
+        }else {
+            throw new RuntimeException("car not found...");
+        }
+
+    }
+
 
 }

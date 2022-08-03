@@ -64,7 +64,7 @@ class CarManage extends Component {
                     vehicleId :vehicleId,
                     vehicleType : vehicleType,
                     brand : brand,
-                    NumOfPassenger : NumOfPassenger,
+                    numOfPassenger : NumOfPassenger,
                     transmissionType :transmissionType,
                     fuelType :fuelType,
                     dailyPrice :dailyPrice,
@@ -103,7 +103,7 @@ class CarManage extends Component {
             vehicleId : this.state.carDetails.vehicleId,
             vehicleType : this.state.carDetails.vehicleType,
             brand  : this.state.carDetails.brand,
-            NumOfPassenger : this.state.carDetails.NumOfPassenger,
+            numOfPassenger : this.state.carDetails.numOfPassenger,
             transmissionType : this.state.carDetails.transmissionType,
             fuelType : this.state.carDetails.fuelType,
             dailyPrice : this.state.carDetails.dailyPrice ,
@@ -132,7 +132,7 @@ class CarManage extends Component {
             vehicleId : this.state.carDetails.vehicleId,
             vehicleType : this.state.carDetails.vehicleType,
             brand  : this.state.carDetails.brand,
-            NumOfPassenger : this.state.carDetails.NumOfPassenger,
+            numOfPassenger : this.state.carDetails.numOfPassenger,
             transmissionType : this.state.carDetails.transmissionType,
             fuelType : this.state.carDetails.fuelType,
             dailyPrice : this.state.carDetails.dailyPrice ,
@@ -209,7 +209,7 @@ class CarManage extends Component {
                 vehicleId : '',
                 vehicleType : '',
                 brand : '',
-                NumOfPassenger : '',
+                numOfPassenger : '',
                 transmissionType : '',
                 fuelType :'',
                 dailyPrice :'',
@@ -355,10 +355,10 @@ class CarManage extends Component {
                                                    InputLabelProps={{
                                                        shrink: true,
                                                    }}
-                                                   value={this.state.carDetails.NumOfPassenger}
+                                                   value={this.state.carDetails.numOfPassenger}
                                                    onChange={(e) => {
                                                        let data = this.state.carDetails
-                                                       data.NumOfPassenger = e.target.value
+                                                       data.numOfPassenger = e.target.value
                                                        this.setState({ data })
                                                    }}
                             /></Grid>

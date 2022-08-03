@@ -21,7 +21,9 @@ import Link from "@material-ui/core/Link";
 import {Container, ListGroup} from "reactstrap";
 import RegisterCustomer from "../register";
 import LoginCustomer from "../loginCustomer";
-import CarDetails from "../../compounts/customer/cutomerData/customerData";
+import CarDetails from "../../compounts/customer/carData/carData";
+
+
 
 const quickLinks = [
     {
@@ -68,7 +70,7 @@ class Login extends Component {
         const year = date.getFullYear();
         const {classes} = this.props;
         return (
-            <body>
+            <body className="body">
             <div className={classes.main_div}>
 
 
@@ -77,24 +79,24 @@ class Login extends Component {
 
                         <div className={classes.icon_container}>
                             <div className={classes.mobileIcon_container}>
-                                <BottomNavigationAction label="Recants" icon={<AiFillPhone/>}/>
+                                <BottomNavigationAction style={{color:'white',top: '3px'}} label="Recants" icon={<AiFillPhone/>}/>
                                 <ul className={classes.mobileNumberList}>
-                                    <li>0711923150</li>
-                                    <li>0778187735</li>
+                                    <li>+94 71-1923150</li>
+                                    <li>+94 77-8187735</li>
                                 </ul>
                             </div>
 
                             <div className={classes.mail_container}>
-                                <BottomNavigationAction label="Favorites" icon={<AiOutlineMail/>}/>
+                                <BottomNavigationAction style={{color:'white', top: '3px' }} label="Favorites" icon={<AiOutlineMail/>}/>
                                 <ul className={classes.mailName}>
                                     upekshasachintha@gmail.com
                                 </ul>
                             </div>
 
                             <div className={classes.location_container}>
-                                <BottomNavigationAction label="Nearby" icon={<ImLocation/>}/>
+                                <BottomNavigationAction style={{color:'white',top: '3px'}} label="Nearby" icon={<ImLocation/>}/>
                                 <ul className={classes.location_deatail}>
-                                    '123',colombo road,galle
+                                    '123',Colombo Road,Galle
                                 </ul>
                             </div>
                         </div>
@@ -102,18 +104,18 @@ class Login extends Component {
                     <Divider style={{borderTop: '4px solid '}}/>
 
 
-                    <div className={classes.navBar_container}>
+                    <div className={classes.navBar_container}style={{fontFamily:'Cairo, sans-serif'}}>
 
 
                         <img src={logo} alt=""/>
 
                         <div className={classes.button_container}>
-                            <Button  style={{ color: 'white'}}>
+                            <Button  style={{ color: 'white' ,}}>
                                 Home
                             </Button>
 
                             <div style={{color: 'white'}}>Cars</div>
-                            <div style={{color: 'white'}}>Pages</div>xv/
+                            <div style={{color: 'white'}}>Pages</div>
                             <div style={{color: 'white'}}>Service</div>
                             <div style={{color: 'white'}}>Blog</div>
                             <div style={{color: 'white'}}>Contact</div>
@@ -142,8 +144,7 @@ class Login extends Component {
                             <LoginCustomer ref={instance => { this.child = instance; }} />
 
                             <div style={{color: 'white',}}>
-
-                            <RegisterCustomer/>
+                                <RegisterCustomer/>
                             </div>
 
                         </div>
@@ -152,7 +153,6 @@ class Login extends Component {
             </div>
 
 
-            <body className="body">
 
             <div className={classes.hero__form}>
                 <Container>
@@ -178,7 +178,7 @@ class Login extends Component {
                 </Row>
             </Container>
 
-            </body>
+
 
 
             <footer className="footer">

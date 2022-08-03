@@ -115,5 +115,19 @@ class CarService {
         return await promise;
     }
 
+    getCarById =async (carId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('Car/getCar?id='+carId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
 }
 export default new CarService();

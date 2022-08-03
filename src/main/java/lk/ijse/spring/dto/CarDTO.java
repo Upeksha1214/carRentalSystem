@@ -14,7 +14,7 @@ public class CarDTO {
     private String vehicleId;
     private String vehicleType;
     private String brand;
-    private String NumOfPassenger;
+    private String numOfPassenger;
     private String transmissionType;
     private String fuelType;
     private String dailyPrice;

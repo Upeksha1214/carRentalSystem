@@ -2,10 +2,11 @@ import React from "react";
 import "../../../pages/Home/style.css";
 import Col from "react-bootstrap/Col";
 import CarDetailsPopUp from "../../../compounts/customer/CarDetailsPopup"
+import RentalRequest from "../../../pages/admin/rentalRequest";
 
 
 const CarItem = (props) => {
-    const { imgUrl, carType, carName, automatic, state , price } = props.item;
+    const { carId,imgUrl, carType, carName, automatic,state , price } = props.item;
     return (
         <Col lg="4"  className="mb-5">
             <div className="car__item">
@@ -31,19 +32,8 @@ const CarItem = (props) => {
                         </span>
                     </div>
 
-                    <button className=" w-50 car_item-btn car_btn-rent" style={{borderRadius: 0,
-                        color:  '#61a5eb',
-                        border: 'none',
-                        outline: 'none',
-                        background: 'rgba(7, 81, 238, 0.73)',
-                        padding: '8px 0px'}}
-                            onClick={() =>{
-                                this.child.handleShow();
-                            }}
-                    >
-                        Rent Now..
-                    </button>
-                    <CarDetailsPopUp ref={instance => { this.child = instance;}} {/*style={{background: '#fdc575'}}*/}/>
+                    <RentalRequest data={props.item}/>
+                    <CarDetailsPopUp ref={instance => { this.child = instance;}} />
                 </div>
             </div>
         </Col>

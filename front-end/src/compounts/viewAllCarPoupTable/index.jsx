@@ -20,7 +20,7 @@ const columns = [
     { id: 'vehicleId', label: "CarId", minWidth: 170 },
     { id: 'vehicleType', label: "Vehicle Type", minWidth: 100 },
     {id: 'brand', label: 'Brand', minWidth: 170, align: 'right'},
-    {id: 'NumOfPassenger', label: "NumOfPassenger", minWidth: 170, align: 'right'},
+    {id: 'numOfPassenger', label: "numOfPassenger", minWidth: 170, align: 'right'},
     {id: 'transmissionType', label: 'Transmission Type', minWidth: 170, align: 'right'},
     {id: 'fuelType', label: 'FuelType', minWidth: 170, align: 'right'},
     {id: 'dailyPrice', label: 'Daily Price', minWidth: 170, align: 'right'},
@@ -32,11 +32,11 @@ const columns = [
     {id: 'color', label: 'Color', minWidth: 170, align: 'right'},
 ];
 
-function createData(vehicleId,vehicleType,brand,NumOfPassenger,transmissionType,fuelType,dailyPrice,
+function createData(vehicleId,vehicleType,brand,numOfPassenger,transmissionType,fuelType,dailyPrice,
                     monthlyPrice,dailyFreeKm ,monthlyFreeKm ,priceOfExtraKm,
                     registerNumber,color) {
 
-    return { vehicleId,vehicleType,brand,NumOfPassenger,transmissionType,fuelType,dailyPrice,
+    return { vehicleId,vehicleType,brand,numOfPassenger,transmissionType,fuelType,dailyPrice,
         monthlyPrice,dailyFreeKm ,monthlyFreeKm ,priceOfExtraKm,
         registerNumber,color };
 }
@@ -56,7 +56,7 @@ const rows = [];
 
 export default function ViewAllCarPopUpTable(props) {
 
-    const loadCarDetails=async (vehicleId,vehicleType,brand,NumOfPassenger,transmissionType,fuelType,dailyPrice,
+    const loadCarDetails=async (vehicleId,vehicleType,brand,numOfPassenger,transmissionType,fuelType,dailyPrice,
                                 monthlyPrice,dailyFreeKm ,monthlyFreeKm ,priceOfExtraKm,
                                 registerNumber,color) =>{
 
@@ -81,7 +81,7 @@ export default function ViewAllCarPopUpTable(props) {
         if (res1.status===200) {
             interiorImage=URL.createObjectURL(res4.data)
         }
-        props.data.changeStateCarDetails(vehicleId,vehicleType,brand,NumOfPassenger,transmissionType,fuelType,dailyPrice,
+        props.data.changeStateCarDetails(vehicleId,vehicleType,brand,numOfPassenger,transmissionType,fuelType,dailyPrice,
             monthlyPrice,dailyFreeKm ,monthlyFreeKm ,priceOfExtraKm,
             registerNumber,color,frontImage,backImage,sideImage,interiorImage);
 
@@ -96,7 +96,7 @@ export default function ViewAllCarPopUpTable(props) {
         if (res.data.code!==undefined){
             var i=0;
             for (let dataKey of res.data.data) {
-                rows[i]=createData(dataKey.vehicleId,dataKey.vehicleType,dataKey.brand,dataKey.NumOfPassenger,dataKey.transmissionType,dataKey.fuelType,dataKey.dailyPrice,dataKey.monthlyPrice,dataKey.dailyFreeKm,dataKey.monthlyFreeKm,dataKey.priceOfExtraKm,dataKey.registerNumber,dataKey.color)
+                rows[i]=createData(dataKey.vehicleId,dataKey.vehicleType,dataKey.brand,dataKey.numOfPassenger,dataKey.transmissionType,dataKey.fuelType,dataKey.dailyPrice,dataKey.monthlyPrice,dataKey.dailyFreeKm,dataKey.monthlyFreeKm,dataKey.priceOfExtraKm,dataKey.registerNumber,dataKey.color)
                 i++;
             }
             setShow(true)
@@ -173,7 +173,7 @@ export default function ViewAllCarPopUpTable(props) {
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}
 
                                                       onClick={async () =>{
-                                                          await loadCarDetails(row.vehicleId,row.vehicleType,row.brand,row.NumOfPassenger,row.transmissionType,row.fuelType,row.dailyPrice,row.monthlyPrice,row.dailyFreeKm,row.monthlyFreeKm,row.priceOfExtraKm,row.registerNumber,row.color);
+                                                          await loadCarDetails(row.vehicleId,row.vehicleType,row.brand,row.numOfPassenger,row.transmissionType,row.fuelType,row.dailyPrice,row.monthlyPrice,row.dailyFreeKm,row.monthlyFreeKm,row.priceOfExtraKm,row.registerNumber,row.color);
                                                           setShow(false)
                                                       }
                                                       }

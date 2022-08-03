@@ -11,4 +11,5 @@ public interface CarService {
     public void deleteCar(String carId);
     public List<RentalRequestDTO> getAllRentalRequest();
     public List<CarDTO> getAllCars();
+    public CarDTO getCarById(String carId);
 }
