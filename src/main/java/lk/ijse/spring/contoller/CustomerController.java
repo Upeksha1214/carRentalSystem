@@ -1,5 +1,6 @@
 package lk.ijse.spring.contoller;
 
+import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.RegisterCustomerDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
@@ -99,15 +100,11 @@ public class CustomerController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil ViewAllCar(){
-        List<Car> cars =customerService.viewCars();
+        List<CarDTO> cars =customerService.viewCars();
         return new ResponseUtil(200,"All car Details received", cars);
     }
 
-    @PostMapping(path = "rentalRequest")
-    public ResponseUtil rentalRequest(@RequestBody RentalRequestDTO rentalRequestDTO){
-        customerService.rentalRequest(rentalRequestDTO);
-        return new ResponseUtil(200,"All car Details received",null);
-    }
+
 
     @PostMapping(path = "checkAccount", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseUtil checkUserAccount(String userName,String password){

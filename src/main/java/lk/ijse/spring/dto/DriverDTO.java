@@ -14,8 +14,8 @@ import lombok.ToString;
 public class DriverDTO {
     private String driverId;
     private String email;
-    private String nic;
-    private String license;
+    private String drivingLicence;
     private String address;
     private String contactNumber;
+    private String state;
 }

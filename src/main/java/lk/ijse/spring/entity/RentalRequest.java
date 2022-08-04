@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -19,7 +16,8 @@ import java.util.Date;
 @ToString
 public class RentalRequest {
     @Id
-    private String requestId;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int requestId;
     @ManyToOne
     private Customer customer;
 
@@ -27,14 +25,17 @@ public class RentalRequest {
     private Car car;
 
     private String pickupDateAndTime;
+    private String returnDateAndTime;
 
     @CreationTimestamp
     private Date requestDateAndTime;
 
+
     private String damagePaySlip;
 
-    private double rentPayment;
+    private String rentPayment;
 
     private String state;
+
 
 }

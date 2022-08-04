@@ -10,11 +10,12 @@ import lombok.ToString;
 @Data
 @ToString
 public class RentalRequestDTO {
-    private String requestId;
     private String customerId;
     private String vehicleId;
     private String pickupDateAndTime;
-    private String damagePaySlip;
-    private double rentPayment;
+    private String returnDateAndTime;
+    private String startPoint;
+    private String endPoint;
+    private String damageSlip;
 
 }

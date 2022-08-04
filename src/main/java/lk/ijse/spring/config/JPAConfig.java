@@ -41,7 +41,7 @@ import javax.sql.DataSource;
         @Bean
         public JpaVendorAdapter jpaVendorAdapter(){
             HibernateJpaVendorAdapter vendor = new HibernateJpaVendorAdapter();
-            vendor.setDatabasePlatform("org.hibernate.dialect.MariaDB106Dialect");
+            vendor.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
             vendor.setDatabase(Database.MYSQL);
             vendor.setShowSql(true);
             vendor.setGenerateDdl(true);
