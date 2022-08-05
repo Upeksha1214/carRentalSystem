@@ -4,7 +4,10 @@ import CarManage from "../pages/admin/carManage/carManage";
 
 import {BrowserRouter} from "react-router-dom";
 import {Route, Routes} from "react-router";
-import DriverAdd from "../pages/admin/driverManage/driverManage";
+import DriverSchedule from "../pages/admin/driverShedule/driverSchedule";
+import ManageDriver from "../pages/admin/driverManage/ManageDriver";
+
+
 
 
 
@@ -17,7 +20,11 @@ import DriverAdd from "../pages/admin/driverManage/driverManage";
        <Routes>
         <Route exact path='/' element={<Login data={{customerId : 'C-001'}}/>}/>
         <Route path="/manageCar" element={<CarManage/>} />
-        <Route path="/manageDriver" element={<DriverAdd/>} />
+        <Route path="/manageDriverShedule" element={<DriverSchedule/>} />
+        <Route path="/manageDriver" element={<ManageDriver/>} />
+
+
+
        </Routes>
       </BrowserRouter>
 

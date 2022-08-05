@@ -30,6 +30,24 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     @Autowired
     private DriverScheduleRepo driverScheduleRepo;
 
+    public void addDriverSchedule(Car car,Driver driver,RentalRequestDTO rentalRequestDTO){
+        DriverSchedule driverSchedule = new DriverSchedule();
+        driverSchedule.setDriver(driver);
+        driverSchedule.setCar(car);
+
+        String[] split = rentalRequestDTO.getPickupDateAndTime().split("T");
+        driverSchedule.setGoDate(split[0]);
+        driverSchedule.setGoTime(split[1]);
+
+        String[] comeDateAndTime = rentalRequestDTO.getReturnDateAndTime().split("T");
+        driverSchedule.setComeDate(comeDateAndTime[0]);
+        driverSchedule.setComeTime(comeDateAndTime[1]);
+
+
+        driverScheduleRepo.save(driverSchedule);
+
+    }
+
     @Override
     public void rentalRequest(RentalRequestDTO rentalRequestDTO) {
 
@@ -47,7 +65,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
             rentalRequest.setState("pending");
             rentalRequestRepo.save(rentalRequest);
 
-              List<Driver> activeDriverList = driverRepo.getDriverByActive();
+              /*List<Driver> activeDriverList = driverRepo.getDriverByActive();
 
               Driver driver = activeDriverList.get(new Random().nextInt(activeDriverList.size()));
               if (driver!=null){
@@ -64,7 +82,62 @@ public class RentalRequestServiceImpl implements RentalRequestService {
                   driverScheduleRepo.save(driverSchedule);
               }else {
 
-              }
+              }*/
+
+
+        List<Driver> allDrivers = driverRepo.findAll();
+
+        Driver driver = allDrivers.get(new Random().nextInt(allDrivers.size()));
+
+        /* System.out.println(driver.toString());*/
+        List<DriverSchedule> all = driverScheduleRepo.findAll();
+
+        if (all.isEmpty()){
+
+            addDriverSchedule(car,driver,rentalRequestDTO);
+
+
+        }else {
+
+            List<DriverSchedule> driverRecord = driverScheduleRepo.ifExitsDriverById(driver.getDriverId());
+
+            if (driverRecord.isEmpty()) {
+                addDriverSchedule(car, driver, rentalRequestDTO);
+                System.out.println("no this Driver Record");
+
+            }else {
+
+                DriverSchedule driverComeTime = driverScheduleRepo.getDriverComeTime(driver.getDriverId());
+                /* System.out.println(driverComeTime.getComeDate());*/
+
+                String[] split = driverComeTime.getComeDate().split("-");
+
+                System.out.println(split[2]);
+
+
+                String[] split1 = rentalRequestDTO.getPickupDateAndTime().split("-");
+
+                String[] split2 = split1[2].split("T");
+
+
+                System.out.println(split2[0]);
+
+                int driverFreeDate = Integer.parseInt(split[2]) + 1;
+                int requestDate = Integer.parseInt(split2[0]);
+
+                System.out.println(requestDate + "  <  " + driverFreeDate);
+                if (requestDate > driverFreeDate) {
+                    addDriverSchedule(car, driver, rentalRequestDTO);
+
+                } else {
+                    throw new RuntimeException("Try Again later");
+                }
+            }
+
+
+
+        }
+
 
 
 

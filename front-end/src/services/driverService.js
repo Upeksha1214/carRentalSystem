@@ -2,6 +2,33 @@ import axios from "../axios";
 
 class DriverService{
 
+
+    checkDriverUserAccount=async (userName,password) =>{
+        const promise = new Promise((resolve, reject) => {
+            var qs = require('qs');
+            var data = qs.stringify({
+                'userName': userName,
+                'password': password,
+            });
+            var config = {
+                method: 'post',
+                url: 'driver/checkAccount',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data : data
+            };
+            axios(config)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
     getDriverIdImage=async (driverId,view) =>{
         const promise = new Promise((resolve, reject) => {
             axios.get('driver/getIdImage?driverId='+driverId+'&view='+view,{
@@ -104,11 +131,6 @@ class DriverService{
 
 
 
-    //------------------------------------------------------------------------------------------------
-
-
-
-
         deleteDriverLicenseImage =async (driverId) =>{
             const promise = new Promise((resolve, reject) => {
                 axios.delete('driver/deleteLicenseImage?driverId='+driverId)
@@ -124,7 +146,6 @@ class DriverService{
         }
 
 
-    //---------------------------------------------------------------------------------------------------------
 
 
         getDriverLicenseImage = async (driverId,view) =>{

@@ -6,7 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const carData=[];
 
-function CarDetails(){
+function CarDetails(props){
     const [loading,setLoading]=useState(false)
     const loadData= async () => {
         carData.length=0;
@@ -40,7 +40,7 @@ function CarDetails(){
                     <ClipLoader color={'blue'} loading={loading}  size={150} />
                     :
                     carData.slice(0,30).map((item) => (
-                        <CarItem item={item}/>
+                        <CarItem item={item} btn={false}/>
                     ))
             }
         </>

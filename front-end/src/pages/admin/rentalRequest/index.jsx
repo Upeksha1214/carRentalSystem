@@ -133,7 +133,7 @@ class RentalRequest extends Component{
             if (resToken.code!='ERR_BAD_REQUEST'){
                 if (resToken.status==200){
                     var sendRequestData={
-                        customerId : this.props.data.customerId,
+                        customerId : 'C-001',
                         vehicleId  : this.props.data.carId,
                         pickupDateAndTime : this.state.pickupDateAndTime,
                         returnDateAndTime : this.state.returnDateAndTime,
@@ -162,7 +162,7 @@ class RentalRequest extends Component{
         const {classes}=this.props
         return (
                   <>
-                    <button className=" w-50 car__item-btn car__btn-rent" style={{color : 'white'}}
+                    <button disabled={this.props.btn} className=" w-50 car__item-btn car__btn-rent" style={{color : 'white'}}
                             onClick={() =>{
                                 this.loadData()
                                 this.handleShow()

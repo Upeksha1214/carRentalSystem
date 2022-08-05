@@ -1,6 +1,6 @@
 package lk.ijse.spring.service.impl;
 
-import lk.ijse.spring.dto.DriverDTO;
+import lk.ijse.spring.dto.RegisterDriverDTO;
 import lk.ijse.spring.entity.Driver;
 import lk.ijse.spring.repo.DriverRepo;
 import lk.ijse.spring.service.DriverService;
@@ -23,12 +23,12 @@ public class DriverServiceImpl implements DriverService {
     private ModelMapper mapper;
 
     @Override
-    public void AddDriver(DriverDTO driverDTO) {
+    public void AddDriver(RegisterDriverDTO registerDriverDTO) {
 
     }
 
     @Override
-    public void saveDriver(DriverDTO dto) {
+    public void saveDriver(RegisterDriverDTO dto) {
         if (!driverRepo.existsById(dto.getDriverId())){
             driverRepo.save(mapper.map(dto, Driver.class));
         }else{
@@ -46,7 +46,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public void updateDriver(DriverDTO dto) {
+    public void updateDriver(RegisterDriverDTO dto) {
         if (driverRepo.existsById(dto.getDriverId())){
             driverRepo.save(mapper.map(dto, Driver.class));
         }else {
@@ -55,22 +55,22 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public DriverDTO searchDriver(String driverId) {
+    public RegisterDriverDTO searchDriver(String driverId) {
         if (driverRepo.existsById(driverId)){
-            return mapper.map(driverRepo.findById(driverId).get(), DriverDTO.class);
+            return mapper.map(driverRepo.findById(driverId).get(), RegisterDriverDTO.class);
         }else {
             throw new RuntimeException("No Driver For " + driverId + " ..!");
         }
     }
 
     @Override
-    public List<DriverDTO> getAllDrivers() {
+    public List<RegisterDriverDTO> getAllDrivers() {
         long count = driverRepo.count();
         if (count != 0) {
             List<Driver> all = driverRepo.findAll();
-            List<DriverDTO> allDrivers = new ArrayList<>();
+            List<RegisterDriverDTO> allDrivers = new ArrayList<>();
             for (Driver driver : all) {
-                allDrivers.add(mapper.map(driver, DriverDTO.class));
+                allDrivers.add(mapper.map(driver, RegisterDriverDTO.class));
             }
 
             return allDrivers;

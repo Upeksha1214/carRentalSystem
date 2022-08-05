@@ -63,6 +63,19 @@ class Login extends Component {
 
     constructor(props) {
         super(props);
+        this.state={
+            loading:false,
+        }
+    }
+    handleCars=(car) => {
+        this.setState({
+            loading:car
+        })
+    }
+    setLoadingFalse=() =>{
+        this.setState({
+            loading:false
+        })
     }
 
     render() {
@@ -124,6 +137,7 @@ class Login extends Component {
                                         style={{color: 'white'}}
 
                                         onClick={() =>{
+
                                             this.child.handleShow();
                                         }}
 
@@ -141,7 +155,7 @@ class Login extends Component {
                                 >Login</Button>
                             </div>
 
-                            <LoginCustomer ref={instance => { this.child = instance; }} />
+                            <LoginCustomer data={{showCars : this.handleCars.bind(this)}} ref={instance => { this.child = instance; }} />
 
                             <div style={{color: 'white',}}>
                                 <RegisterCustomer/>
@@ -174,7 +188,10 @@ class Login extends Component {
                         <h6 className="section__subtitle">Come with</h6>
                         <h2 className="section__title">Hot Offers</h2>
                     </Col>
-                    <CarDetails/>
+                    {
+                        this.state.loading ? <CarDetails/> : <div></div>
+                    }
+
                 </Row>
             </Container>
 

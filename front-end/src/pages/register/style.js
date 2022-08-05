@@ -73,7 +73,6 @@ export const styleSheet={
         width : '100%',
         display : 'flex',
         flexDirection : 'row',
-        backgroundColor: 'red',
         alignItems : 'center',
         justifyContent : 'center'
     },

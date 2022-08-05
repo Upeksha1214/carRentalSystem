@@ -18,4 +18,5 @@ public class RentalRequestDTO {
     private String endPoint;
     private String damageSlip;
 
+
 }

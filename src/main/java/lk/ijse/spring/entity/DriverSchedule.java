@@ -23,7 +23,10 @@ public class DriverSchedule{
     @ManyToOne(cascade = CascadeType.ALL)
     private Car car;
 
-    private String date;
-    private String time;
+    private String goDate;
+    private String goTime;
+
+    private String comeDate;
+    private String comeTime;
 
 }

@@ -114,6 +114,7 @@ class LoginCustomer extends Component{
                                 <Button
                                     disabled={this.state.onDisableLoginButton}
                                     onClick={async () =>{
+                                        this.props.data.showCars(true);
                                         await this.loginCustomer();
                                     }}
                                     style={{width : '80%' , backgroundColor : '#FF6B1F'}}

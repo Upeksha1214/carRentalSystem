@@ -32,7 +32,7 @@ const CarItem = (props) => {
                         </span>
                     </div>
 
-                    <RentalRequest data={props.item}/>
+                    <RentalRequest data={props.item} btn={props.btn}/>
                     <CarDetailsPopUp ref={instance => { this.child = instance;}} />
                 </div>
             </div>

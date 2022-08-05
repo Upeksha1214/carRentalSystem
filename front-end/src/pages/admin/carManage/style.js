@@ -23,9 +23,10 @@ export const styleSheet = {
     },
 
     form_background: {
+        marginTop: '100px',
         backgroundColor: 'white',
         width: '70%',
-        height : '95%',
+        height : '600px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

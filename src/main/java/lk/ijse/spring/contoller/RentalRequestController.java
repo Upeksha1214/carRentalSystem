@@ -33,7 +33,7 @@ public class RentalRequestController {
     @PostMapping(path = "uploadDamageSlip")
     public ResponseUtil uploadDamageSlip(@RequestParam(value = "param") MultipartFile multipartFile,@RequestParam String custId){
 
-        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\Image\\damageSlip";
+        String pathDirectory="D:\\SpringProject\\CarRentalSystem\\src\\main\\resources\\static\\Image\\damageSlip\\";
         String token=null;
 
 
